@@ -1,0 +1,21 @@
+{
+  "name": "graphql-server-savoy",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "graphql server for savoy shop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^3.8.1",
+    "apollo-server-core": "^3.8.1",
+    "apollo-server-express": "^3.8.1",
+    "graphql": "^15.4.0",
+    "join-monster": "^3.1.1",
+    "pg": "^8.7.3",
+    "uuid": "^8.3.2"
+  }
+}
