@@ -1,9 +1,9 @@
 import {ApolloServer} from "apollo-server"
-import {typeDefs} from './schema.js'
-import {Query} from "./resolvers/Query.js"
-import {Mutation} from "./resolvers/Mutation.js";
-import {Category} from "./resolvers/Category.js";
-import {db} from "./db.js"
+import {typeDefs} from './project/schema.js'
+import {Query} from "./project/resolvers/Query.js"
+import {Mutation} from "./project/resolvers/Mutation.js";
+import {Category} from "./project/resolvers/Category.js";
+import {db} from "./project/db.js"
 
 const server = new ApolloServer({
     typeDefs,

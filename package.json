@@ -13,9 +13,7 @@
     "apollo-server": "^3.8.1",
     "apollo-server-core": "^3.8.1",
     "apollo-server-express": "^3.8.1",
-    "graphql": "^15.4.0",
-    "join-monster": "^3.1.1",
-    "pg": "^8.7.3",
+    "graphql": "^16.5.0",
     "uuid": "^8.3.2"
   }
 }
