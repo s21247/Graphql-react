@@ -1,75 +1,80 @@
 import {v4} from "uuid"
+import {ApolloError} from "apollo-server";
 
 export const Mutation = {
-    addCategory: (parent, {input}, {db}) => {
+    addCategory: (parent, {input}, {firebaseDB}) => {
         const {name} = input
-        const newCategory = {
-            id: v4(),
+        const id = v4();
+        firebaseDB.database().ref(`categories/${id}`).set({
             name: name
-        }
-        db.categories.push(newCategory);
-        return newCategory;
-    },
-    addProduct: (parent, {input}, {db}) => {
-        const {
-            name,
-            image,
-            price,
-            description,
-            categoryId
-
-        } = input
-        const newProduct = {
-            id: v4(),
-            name,
-            image,
-            price,
-            description,
-            categoryId
-        }
-        db.products.push(newProduct)
-        return newProduct;
-    },
-    deleteCategory: (parent, {id}, {db}) => {
-        if (!id)
-            return false;
-        db.categories = db.categories.filter(category => category.id !== id)
-        db.products = db.products.map(product => {
-            if (product.categoryId === id)
-                return {
-                    ...product,
-                    categoryId: null
-                }
-
-            else return product;
         })
-        return true;
-    },
-    deleteProduct: (parent, {id}, {db}) => {
-        if (!id)
-            return false;
-        db.products = db.products.filter(products => products.id !== id)
-        return true;
-    },
-    updateCategory: (parent, {id, input}, {db}) => {
-        const index = db.categories.findIndex(category => category.id === id);
-        if (index === -1)
-            return null;
-        db.categories[index] = {
-            ...db.categories[index],
-            ...input
-        }
-        return db.categories[index]
-    },
-    updateProduct: (parent, {id, input}, {db}) => {
-        const index = db.products.findIndex(product => product.id === id);
-        if(index === -1)
-            return null
-        db.products[index] = {
-            ...db.products[index],
-            ...input
-        }
-        return db.products[index]
 
+        return {
+            id,
+            name: name
+        };
+    },
+    addProduct: (parent, {input}, {firebaseDB}) => {
+        const id = v4()
+        firebaseDB.database().ref(`products/${id}`).set({
+            ...input
+
+        })
+        return {
+            ...input
+        };
+    },
+    deleteCategory: async (parent, {id}, {firebaseDB}) => {
+        const categoryRef = firebaseDB.database().ref(`categories/${id}`)
+        categoryRef.get()
+            .then((docSnapshot) => {
+                if(docSnapshot.exists){
+                    firebaseDB.database().ref(`categories/${id}`).remove()
+                    return `Successfully removed category with id: ${id}`
+                }else
+                    throw new ApolloError('My error message', 'MY_ERROR_CODE');
+            })
+    },
+    deleteProduct: (parent, {id}, {firebaseDB}) => {
+        const productRef = firebaseDB.database().ref(`products/${id}`)
+        productRef.get()
+            .then((docSnapshot) => {
+                if (docSnapshot.exists) {
+                    firebaseDB.database().ref(`products/${id}`).remove()
+                    return `Successfully removed product with id: ${id}`
+                } else
+                    throw new ApolloError('My error message', 'MY_ERROR_CODE')
+            })
+    },
+    updateCategory: (parent, {id, input}, {firebaseDB}) => {
+        const categoryRef = firebaseDB.database().ref(`categories/${id}`)
+        const {name} = input
+        categoryRef.get()
+            .then((docSnapshot) => {
+            if (docSnapshot.exists) {
+                return categoryRef.update({
+                    name: name
+                })
+            } else
+                throw new ApolloError('My error message', 'MY_ERROR_CODE')
+        })
+        return {
+            name
+        }
+    },
+    updateProduct: (parent, {id, input}, {firebaseDB}) => {
+        const productRef = firebaseDB.database().ref(`products/${id}`)
+        productRef.get()
+            .then((docSnapshot) => {
+                if (docSnapshot.exists) {
+                    return productRef.update({
+                        ...input
+                    })
+                } else
+                    throw new ApolloError('My error message', 'MY_ERROR_CODE')
+            })
+        return {
+            ...input
+        }
     }
 }

@@ -1,15 +1,34 @@
 
 export const Query =  {
-    products: (parent,args, {db}) => {
-        return db.products
+
+    products: async (parent, args, {firebaseDB}) => {
+        return firebaseDB
+            .database()
+            .ref("products")
+            .once("value")
+            .then(snap => snap.val())
+            .then(val => Object.keys(val).map(key => val[key]))
     },
-        product: (parent, {id}, {db}) => {
-        return db.products.find(product => product.id === id)
+        product: (parent, {id}, {firebaseDB}) => {
+            return firebaseDB
+                .database()
+                .ref(`products/${id}`)
+                .once("value")
+                .then(snap => snap.val())
     },
-        categories: (parent,args, {db}) => {
-        return db.categories
+        categories: (parent,args, {firebaseDB}) => {
+        return firebaseDB
+            .database()
+            .ref("categories")
+            .once("value")
+            .then(snap => snap.val())
+            .then(val => Object.keys(val).map(key => val[key]))
     },
-        category: (parent, {id}, {db}) => {
-        return db.categories.find(category => category.id === id)
+        category: (parent, {id}, {firebaseDB}) => {
+        return firebaseDB
+            .database()
+            .ref(`categories/${id}`)
+            .once("value")
+            .then(snap => snap.val())
     }
 }

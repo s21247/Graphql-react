@@ -19,7 +19,6 @@ export const typeDefs = gql`
     }
     
     type Product {
-        id: ID!
         name: String!
         description: String!
         price: Float!
