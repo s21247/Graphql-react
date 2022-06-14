@@ -1,7 +1,8 @@
-node_modules
 # Keep environment variables out of version control
 .env
 .idea
-project/db-key/firebaseDB.js
+project/db-key/data.json
 project/db-key/serviceAccountKey.json
-project/db.js
+database-debug.log
+ui-debug.log
+node_modules

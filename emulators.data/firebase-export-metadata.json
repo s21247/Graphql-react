@@ -1,0 +1,8 @@
+{
+  "version": "11.0.1",
+  "database": {
+    "name": "savoy-database",
+    "version": "4.8.0",
+    "path": "database_export"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "products": {
+    "test-1": {
+      "id": "test-1",
+      "name": "name",
+      "description": "description",
+      "price": 21.00,
+      "image": "img-1",
+      "categoryId": "Cattest-1"
+    },
+    "test-2": {
+      "id": "test-2",
+      "name": "lamp",
+      "description": "designn",
+      "price": 89.00,
+      "image": "img-2",
+      "categoryId": "Cattest-2"
+    },
+    "test-3": {
+      "id": "test-3",
+      "name": "Basket",
+      "description": "Its sleek",
+      "price": 3.00,
+      "image": "img-3",
+      "categoryId": "Cattest-1"
+    }
+  },
+  "categories": {
+    "Cattest-1": {
+      "id": "Cattest-1",
+      "name": "Bags & Backpacks"
+    },
+    "Cattest-2": {
+      "id": "Cattest-2",
+      "name": "Decoration"
+    }
+  }
+}

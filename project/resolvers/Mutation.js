@@ -6,6 +6,7 @@ export const Mutation = {
         const {name} = input
         const id = v4();
         firebaseDB.database().ref(`categories/${id}`).set({
+            id,
             name: name
         })
 
@@ -17,31 +18,34 @@ export const Mutation = {
     addProduct: (parent, {input}, {firebaseDB}) => {
         const id = v4()
         firebaseDB.database().ref(`products/${id}`).set({
+            id,
             ...input
 
         })
         return {
+            id,
             ...input
         };
     },
-    deleteCategory: async (parent, {id}, {firebaseDB}) => {
+    deleteCategory: (parent, {id}, {firebaseDB}) => {
         const categoryRef = firebaseDB.database().ref(`categories/${id}`)
         categoryRef.get()
             .then((docSnapshot) => {
-                if(docSnapshot.exists){
-                    firebaseDB.database().ref(`categories/${id}`).remove()
-                    return `Successfully removed category with id: ${id}`
-                }else
-                    throw new ApolloError('My error message', 'MY_ERROR_CODE');
+                if (docSnapshot.exists()) {
+                    categoryRef.remove()
+                    return true;
+                }
+                 else
+                    throw new ApolloError('My error message', 'MY_ERROR_CODE')
             })
     },
     deleteProduct: (parent, {id}, {firebaseDB}) => {
         const productRef = firebaseDB.database().ref(`products/${id}`)
         productRef.get()
             .then((docSnapshot) => {
-                if (docSnapshot.exists) {
-                    firebaseDB.database().ref(`products/${id}`).remove()
-                    return `Successfully removed product with id: ${id}`
+                if (docSnapshot.exists()) {
+                    productRef.remove()
+                    return true
                 } else
                     throw new ApolloError('My error message', 'MY_ERROR_CODE')
             })
@@ -51,14 +55,15 @@ export const Mutation = {
         const {name} = input
         categoryRef.get()
             .then((docSnapshot) => {
-            if (docSnapshot.exists) {
-                return categoryRef.update({
-                    name: name
-                })
-            } else
-                throw new ApolloError('My error message', 'MY_ERROR_CODE')
-        })
+                if (docSnapshot.exists()) {
+                    return categoryRef.update({
+                        name: name
+                    })
+                } else
+                    throw new ApolloError('My error message', 'MY_ERROR_CODE')
+            })
         return {
+            id,
             name
         }
     },
@@ -66,7 +71,7 @@ export const Mutation = {
         const productRef = firebaseDB.database().ref(`products/${id}`)
         productRef.get()
             .then((docSnapshot) => {
-                if (docSnapshot.exists) {
+                if (docSnapshot.exists()) {
                     return productRef.update({
                         ...input
                     })
@@ -74,6 +79,7 @@ export const Mutation = {
                     throw new ApolloError('My error message', 'MY_ERROR_CODE')
             })
         return {
+            id,
             ...input
         }
     }

@@ -1,0 +1,69 @@
+[debug] [2022-06-14T13:37:58.170Z] ----------------------------------------------------------------------
+[debug] [2022-06-14T13:37:58.172Z] Command:       C:\Program Files\nodejs\node.exe C:\Program Files\nodejs\node_modules\firebase-tools\lib\bin\firebase.js emulators:start --import=./emulators.data
+[debug] [2022-06-14T13:37:58.173Z] CLI Version:   11.0.1
+[debug] [2022-06-14T13:37:58.173Z] Platform:      win32
+[debug] [2022-06-14T13:37:58.173Z] Node Version:  v16.15.1
+[debug] [2022-06-14T13:37:58.181Z] Time:          Tue Jun 14 2022 15:37:58 GMT+0200 (Central European Summer Time)
+[debug] [2022-06-14T13:37:58.182Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-06-14T13:37:58.330Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-06-14T13:37:58.330Z] > authorizing via signed-in user (s21247@pjwstk.edu.pl)
+[debug] [2022-06-14T13:37:58.525Z] java version "11.0.12" 2021-07-20 LTS
+[debug] [2022-06-14T13:37:58.527Z] 
+Java(TM) SE Runtime Environment 18.9 (build 11.0.12+8-LTS-237)
+Java HotSpot(TM) 64-Bit Server VM 18.9 (build 11.0.12+8-LTS-237, mixed mode)
+
+[debug] [2022-06-14T13:37:58.560Z] Parsed Java major version: 11
+[info] i  emulators: Starting emulators: database {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: database"}}
+[debug] [2022-06-14T13:37:58.613Z] [hub] writing locator at C:\Users\wojte\AppData\Local\Temp\hub-savoy-database.json
+[debug] [2022-06-14T13:37:58.942Z] > refreshing access token with scopes: []
+[debug] [2022-06-14T13:37:58.943Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2022-06-14T13:37:59.178Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Tue, 14 Jun 2022 13:37:59 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2022-06-14T13:37:59.200Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/savoy-database [none]
+[debug] [2022-06-14T13:37:59.961Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/savoy-database 200
+[debug] [2022-06-14T13:37:59.961Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/savoy-database {"projectId":"savoy-database","projectNumber":"758806786299","displayName":"savoy-db","name":"projects/savoy-database","resources":{"hostingSite":"savoy-database","realtimeDatabaseInstance":"savoy-database-default-rtdb","storageBucket":"savoy-database.appspot.com","locationId":"europe-west"},"state":"DELETED"}
+[debug] [2022-06-14T13:37:59.962Z] database rules config:  []
+[warn] !  database: Did not find a Realtime Database rules file specified in a firebase.json config file. The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration. {"metadata":{"emulator":{"name":"database"},"message":"Did not find a Realtime Database rules file specified in a firebase.json config file. The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration."}}
+[debug] [2022-06-14T13:37:59.970Z] Ignoring unsupported arg: projectId {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: projectId"}}
+[debug] [2022-06-14T13:37:59.970Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2022-06-14T13:37:59.971Z] Ignoring unsupported arg: rules {"metadata":{"emulator":{"name":"database"},"message":"Ignoring unsupported arg: rules"}}
+[debug] [2022-06-14T13:37:59.971Z] Starting Database Emulator with command {"binary":"java","args":["-Duser.language=en","-jar","C:\\Users\\wojte\\.cache\\firebase\\emulators\\firebase-database-emulator-v4.8.0.jar","--host","localhost","--port",9000],"optionalArgs":["port","host","functions_emulator_port","functions_emulator_host"],"joinArgs":false} {"metadata":{"emulator":{"name":"database"},"message":"Starting Database Emulator with command {\"binary\":\"java\",\"args\":[\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\wojte\\\\.cache\\\\firebase\\\\emulators\\\\firebase-database-emulator-v4.8.0.jar\",\"--host\",\"localhost\",\"--port\",9000],\"optionalArgs\":[\"port\",\"host\",\"functions_emulator_port\",\"functions_emulator_host\"],\"joinArgs\":false}"}}
+[info] i  database: Database Emulator logging to database-debug.log {"metadata":{"emulator":{"name":"database"},"message":"Database Emulator logging to \u001b[1mdatabase-debug.log\u001b[22m"}}
+[debug] [2022-06-14T13:38:01.457Z] WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by io.netty.util.internal.ReflectionUtil (file:/C:/Users/wojte/.cache/firebase/emulators/firebase-database-emulator-v4.8.0.jar) to field sun.nio.ch.SelectorImpl.selectedKeys
+WARNING: Please consider reporting this to the maintainers of io.netty.util.internal.ReflectionUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+ {"metadata":{"emulator":{"name":"database"},"message":"WARNING: An illegal reflective access operation has occurred\r\nWARNING: Illegal reflective access by io.netty.util.internal.ReflectionUtil (file:/C:/Users/wojte/.cache/firebase/emulators/firebase-database-emulator-v4.8.0.jar) to field sun.nio.ch.SelectorImpl.selectedKeys\r\nWARNING: Please consider reporting this to the maintainers of io.netty.util.internal.ReflectionUtil\r\nWARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations\r\nWARNING: All illegal access operations will be denied in a future release\r\n"}}
+[debug] [2022-06-14T13:38:02.471Z] 15:38:02.466 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+ {"metadata":{"emulator":{"name":"database"},"message":"15:38:02.466 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started\r\n"}}
+[debug] [2022-06-14T13:38:02.887Z] 15:38:02.872 [main] INFO com.firebase.server.forge.App$ - Listening at localhost:9000
+ {"metadata":{"emulator":{"name":"database"},"message":"15:38:02.872 [main] INFO com.firebase.server.forge.App$ - Listening at localhost:9000\r\n"}}
+[info] i  database: Importing data from C:\Users\wojte\Desktop\pomocnicze\graphql-server-savoy\emulators.data\database_export\data.json {"metadata":{"emulator":{"name":"database"},"message":"Importing data from C:\\Users\\wojte\\Desktop\\pomocnicze\\graphql-server-savoy\\emulators.data\\database_export\\data.json"}}
+[debug] [2022-06-14T13:38:04.360Z] 15:38:04.358 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - data successfully activated FBKV (SurveyIdle(0)) wait: 407ms, init: 0ms
+ {"metadata":{"emulator":{"name":"database"},"message":"15:38:04.358 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - data successfully activated FBKV (SurveyIdle(0)) wait: 407ms, init: 0ms\r\n"}}
+[debug] [2022-06-14T13:38:04.701Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2022-06-14T13:38:04.702Z] Ignoring unsupported arg: port {"metadata":{"emulator":{"name":"ui"},"message":"Ignoring unsupported arg: port"}}
+[debug] [2022-06-14T13:38:04.702Z] Starting Emulator UI with command {"binary":"node","args":["--dns-result-order=ipv4first","C:\\Users\\wojte\\.cache\\firebase\\emulators\\ui-v1.7.0\\server.bundle.js"],"optionalArgs":[],"joinArgs":false} {"metadata":{"emulator":{"name":"ui"},"message":"Starting Emulator UI with command {\"binary\":\"node\",\"args\":[\"--dns-result-order=ipv4first\",\"C:\\\\Users\\\\wojte\\\\.cache\\\\firebase\\\\emulators\\\\ui-v1.7.0\\\\server.bundle.js\"],\"optionalArgs\":[],\"joinArgs\":false}"}}
+[info] i  ui: Emulator UI logging to ui-debug.log {"metadata":{"emulator":{"name":"ui"},"message":"Emulator UI logging to \u001b[1mui-debug.log\u001b[22m"}}
+[debug] [2022-06-14T13:38:05.015Z] Web / API server started at localhost:5002
+ {"metadata":{"emulator":{"name":"ui"},"message":"Web / API server started at localhost:5002\n"}}
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://localhost:5002                │
+└─────────────────────────────────────────────────────────────┘
+
+┌──────────┬────────────────┬────────────────────────────────┐
+│ Emulator │ Host:Port      │ View in Emulator UI            │
+├──────────┼────────────────┼────────────────────────────────┤
+│ Database │ localhost:9000 │ http://localhost:5002/database │
+└──────────┴────────────────┴────────────────────────────────┘
+  Emulator Hub running at localhost:4400
+  Other reserved ports: 4500
+
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2022-06-14T13:38:05.831Z] 15:38:05.831 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - savoy-database successfully activated FBKV (SurveyIdle(0)) wait: 4ms, init: 0ms
+ {"metadata":{"emulator":{"name":"database"},"message":"15:38:05.831 [NamespaceSystem-akka.actor.default-dispatcher-5] INFO com.firebase.core.namespace.NamespaceActor - savoy-database successfully activated FBKV (SurveyIdle(0)) wait: 4ms, init: 0ms\r\n"}}

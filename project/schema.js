@@ -12,13 +12,14 @@ export const typeDefs = gql`
     type Mutation {
         addCategory(input: AddCategoryInput!): Category!
         addProduct(input: AddProductInput!): Product!
-        deleteCategory(id: ID!): Boolean!
+        deleteCategory(id: ID!): Boolean
         deleteProduct(id: ID!): Boolean
         updateCategory(id: ID!,input: UpdateCategoryInput!): Category!
         updateProduct(id: ID!, input: UpdateProductInput!): Product!
     }
     
     type Product {
+        id: String!
         name: String!
         description: String!
         price: Float!

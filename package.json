@@ -5,17 +5,38 @@
   "description": "graphql server for savoy shop",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test-server": "set TESTS_COMMAND=tests&& mocha node index.js --reporter spec",
+    "test-database": "firebase emulators:start --import=./emulators.data",
+    "test": "jest"
+  },
+  "jest": {
+    "verbose": true,
+    "testEnvironment": "node",
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@babel/core": "^7.18.2",
     "apollo-server": "^3.8.1",
     "apollo-server-core": "^3.8.1",
     "apollo-server-express": "^3.8.1",
+    "axios": "^0.27.2",
+    "chai": "^4.3.6",
     "firebase": "^9.8.2",
     "firebase-admin": "^10.2.0",
     "graphql": "^16.5.0",
+    "graphql-tools": "^8.2.11",
+    "jest": "^28.1.1",
+    "mocha": "^10.0.0",
     "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-import-assertions": "^7.17.12",
+    "@babel/preset-env": "^7.18.2",
+    "babel-jest": "^28.1.1"
   }
 }
