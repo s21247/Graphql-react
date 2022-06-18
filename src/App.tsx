@@ -5,6 +5,7 @@ import AboutDescription from "./Components/AboutDescription";
 import StoreNavbar from "./Components/StoreNavbar";
 import StoreItemList from "./Components/StoreItemList";
 function App() {
+    console.log('test')
   return (
     <>
       <div className="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
@@ -12,7 +13,8 @@ function App() {
         <MainImage />
       </div>
       <section className="bg-white py-8">
-        <div className="container mx-auto flex items-center flex-wrap pt-4 pb-12">
+        <div className="container mx-auto flex items-center flex-wrap p
+        t-4 pb-12">
           <StoreNavbar />
           <StoreItemList />
         </div>
