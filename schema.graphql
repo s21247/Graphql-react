@@ -1,0 +1,60 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+    query: Query
+    mutation: Mutation
+}
+
+type Category {
+    id: ID!
+    name: String!
+    products: [Product!]!
+}
+
+type Mutation {
+    addCategory(input: AddCategoryInput!): Category!
+    addProduct(input: AddProductInput!): Product!
+    deleteCategory(id: ID!): Boolean
+    deleteProduct(id: ID!): Boolean
+    updateCategory(id: ID!, input: UpdateCategoryInput!): Category!
+    updateProduct(id: ID!, input: UpdateProductInput!): Product!
+}
+
+type Product {
+    description: String!
+    id: String!
+    image: String
+    name: String!
+    price: Float!
+}
+
+type Query {
+    categories: [Category!]!
+    category(id: ID!): Category
+    product(id: ID!): Product
+    products: [Product!]!
+}
+
+input AddCategoryInput {
+    name: String!
+}
+
+input AddProductInput {
+    categoryId: String!
+    description: String!
+    image: String!
+    name: String!
+    price: Float!
+}
+
+input UpdateCategoryInput {
+    name: String!
+}
+
+input UpdateProductInput {
+    categoryId: String
+    description: String!
+    image: String!
+    name: String!
+    price: Float!
+}

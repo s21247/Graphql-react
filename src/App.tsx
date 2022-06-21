@@ -1,26 +1,15 @@
 import React from "react";
-import Navbar from "./Components/Navbar";
-import MainImage from "./Components/MainImage";
-import AboutDescription from "./Components/AboutDescription";
-import StoreNavbar from "./Components/StoreNavbar";
-import StoreItemList from "./Components/StoreItemList";
+import Navbar from "./Components/layout/Navbar";
+import {BrowserRouter as Router} from "react-router-dom";
+import Routing from "./Components/Routing/Routing";
+
 function App() {
-    console.log('test')
   return (
     <>
-      <div className="bg-white text-gray-600 work-sans leading-normal text-base tracking-normal">
-        <Navbar />
-        <MainImage />
-      </div>
-      <section className="bg-white py-8">
-        <div className="container mx-auto flex items-center flex-wrap p
-        t-4 pb-12">
-          <StoreNavbar />
-          <StoreItemList />
-        </div>
-      </section>
-
-      <AboutDescription />
+        <Router>
+            <Navbar/>
+            <Routing/>
+        </Router>
     </>
   );
 }
