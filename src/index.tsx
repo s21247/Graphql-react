@@ -3,9 +3,9 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import { ApolloProvider } from "@apollo/client";
-import { apolloClient } from "./config/apolloClient";
+import { apolloClient } from "./Config/apolloClient";
 import { Provider } from "react-redux";
-import {store} from "./Components/store/store";
+import {store} from "./Components/Store/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

@@ -1,4 +1,4 @@
-export interface Products {
+export interface Product {
   id: string;
   name: string;
   description: string;
@@ -6,6 +6,6 @@ export interface Products {
   image: string;
 }
 
-export interface ProductsData {
-    products: Products[];
+export interface Products {
+    products: Product[];
 }

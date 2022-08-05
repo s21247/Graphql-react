@@ -1,8 +1,5 @@
-import React from "react";
 import { useQuery, gql } from "@apollo/client";
-import {Products, ProductsData} from "../models/Products";
-
-
+import { Product, Products } from "../Models/Product";
 
 const GET_PRODUCTS = gql`
   query {
@@ -15,10 +12,9 @@ const GET_PRODUCTS = gql`
     }
   }
 `;
-const GetProducts = ():Products[] | undefined => {
-  const { data } = useQuery<ProductsData>(GET_PRODUCTS);
-  return data?.products
-
+const GetProducts = (): Product[] | undefined => {
+  const { data } = useQuery<Products>(GET_PRODUCTS);
+  return data?.products;
 };
 
 export default GetProducts;
