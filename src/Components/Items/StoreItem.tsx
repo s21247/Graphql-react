@@ -1,17 +1,21 @@
 import React, { useState } from "react";
-import { Product } from "../Models/Product";
-import Modal from "../Hooks/Modal";
+import { Product } from "../Models/Product.interface";
+import ItemModal from "../Hooks/ItemModal";
 import StoreItemDetails from "./StoreItemDetails";
+import ShopModal from "../Hooks/ShopModal";
+import CardPanel from "../Cart/CardPanel";
 
 const StoreItem = (props: Product) => {
-  const [isHovering, setIsHovering] = useState<Boolean>(false);
-  const [isOpen, setIsOpen] = useState<Boolean>(false);
+  const [isHovering, setIsHovering] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [cartOpen, setCartOpen] = useState<boolean>(false);
 
   const handleMouseHover = () => setIsHovering((current) => !current);
-  const handleClick = () => setIsOpen(current => !current);
+  const handleClickItemModal = () => setIsOpen((current) => !current);
+  const handleClickShopModal = () => setCartOpen((current) => !current);
   return (
     <>
-        <img
+      <img
         className="hover:grow hover:shadow-lg"
         src={props.image}
         alt={"pic"}
@@ -29,7 +33,7 @@ const StoreItem = (props: Product) => {
       <div
         onMouseOver={handleMouseHover}
         onMouseOut={handleMouseHover}
-        onClick={handleClick}
+        onClick={handleClickItemModal}
         className="text-base pt-1 text-gray-900"
       >
         {isHovering ? (
@@ -38,19 +42,20 @@ const StoreItem = (props: Product) => {
           `$${props.price}`
         )}
       </div>
-        <Modal
-            open={isOpen}
-                onClose={handleClick}>
-
-            <StoreItemDetails
-                id={props.id}
-                image={props.image}
-                description={props.description}
-                price={props.price}
-                name={props.name}/>
-        </Modal>
-
-
+      <ItemModal open={isOpen} onClose={handleClickItemModal}>
+        <StoreItemDetails
+          id={props.id}
+          image={props.image}
+          description={props.description}
+          price={props.price}
+          name={props.name}
+          openCart={handleClickShopModal}
+          closeItemDetails={handleClickItemModal}
+        />
+      </ItemModal>
+      <ShopModal open={cartOpen} onClose={handleClickShopModal}>
+        <CardPanel name={props.name} price={props.price} image={props.image}/>
+      </ShopModal>
     </>
   );
 };

@@ -1,5 +1,5 @@
 import React from "react";
-import { Categories } from "../Models/Category";
+import { Categories } from "../Models/Category.interface";
 
 const StoreNavbar = ({ categories }: Categories) => {
   return (

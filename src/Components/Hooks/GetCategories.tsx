@@ -1,5 +1,5 @@
 import { gql, useQuery } from "@apollo/client";
-import { Category, Categories } from "../Models/Category";
+import { Category, Categories } from "../Models/Category.interface";
 
 const GET_CATEGORIES = gql`
   query {

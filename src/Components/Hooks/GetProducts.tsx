@@ -1,5 +1,5 @@
 import { useQuery, gql } from "@apollo/client";
-import { Product, Products } from "../Models/Product";
+import { Product, Products } from "../Models/Product.interface";
 
 const GET_PRODUCTS = gql`
   query {

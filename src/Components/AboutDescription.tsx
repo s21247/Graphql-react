@@ -18,8 +18,8 @@ const AboutDescription = () => {
             <br />
             <a
               className="text-gray-800 underline hover:text-gray-900"
-              href="http://savoy.nordicmade.com/"
-              target="_blank"
+              href="https://savoy.nordicmade.com/"
+              target="/"
             >
               Savoy Theme
             </a>{" "}
@@ -34,7 +34,7 @@ const AboutDescription = () => {
             <a
               className="text-gray-800 underline hover:text-gray-900"
               href="https://www.metricdesign.no/"
-              target="_blank"
+              target="/"
             >
               https://www.metricdesign.no/
             </a>
