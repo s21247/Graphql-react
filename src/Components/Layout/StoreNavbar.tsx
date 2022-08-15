@@ -7,7 +7,7 @@ const StoreNavbar = ({ categories }: Categories) => {
       <nav id="store" className="w-full top-0 px-6 py-1">
         <div className="w-full container mx-auto flex flex-wrap items-center justify-start mt-0 px-2 py-3">
           <a
-              key={"all"}
+            key={"all"}
             className="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl "
             href="/"
           >
@@ -15,18 +15,15 @@ const StoreNavbar = ({ categories }: Categories) => {
           </a>
           {categories.map((category) => (
             <a
-              className="uppercase tracking-wide no-underline hover:no-underline mx-5 font-bold text-gray-800 text-xl "
               key={category.id}
+              className="uppercase tracking-wide no-underline hover:no-underline mx-5 font-bold text-gray-800 text-xl "
               href={category.name}
             >
               {category.name}
             </a>
           ))}
 
-          <div
-            className="flex items-center ml-auto"
-            id="store-nav-content"
-          >
+          <div className="flex items-center ml-auto" id="store-nav-content">
             <a
               className="pl-3 inline-block no-underline hover:text-black uppercase tracking-wide no-underline hover:no-underline mx-5 font-bold text-gray-800 text-xl ml-5"
               href="/"

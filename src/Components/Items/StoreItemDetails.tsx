@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Product} from "../Models/Product.interface";
+import {useDispatch} from "react-redux";
+import {cartItemAdded} from "../Features/cart/cartSlice";
 
 interface Prop{
     openCart:  React.Dispatch<React.SetStateAction<Boolean>>;
@@ -7,7 +9,13 @@ interface Prop{
 }
 
 type Props = Prop & Product
-const StoreItemDetails = ({image,name,price,description,openCart, closeItemDetails}: Props) => {
+const StoreItemDetails = ({id,image,name,price,description,openCart, closeItemDetails}: Props) => {
+    const dispatch = useDispatch()
+    const [quantity,setQuantity] = useState<number>(1)
+    const onClickItemAdded = () => {
+            dispatch(cartItemAdded(id,image,description,price,name,quantity))
+    }
+
     return (
         <>
             <div className="pt-6 flex flex-row content-center justify-items-center">
@@ -18,11 +26,15 @@ const StoreItemDetails = ({image,name,price,description,openCart, closeItemDetai
             <div className="flex flex-col mt-2">
                 <div className="flex flex-row border border-gray-400 w-3/4 mx-auto mt-4 items-center">
                     <p className="pl-5">Quantity:</p>
-                    <button className="h-0 w-0 ml-auto order-2 border-x-8 border-x-transparent border-b-[8px] border-b-gray-600 -rotate-90"></button>
-                    <p className="order-2 mx-5">1</p>
-                    <button className="h-0 w-0 border-x-8 border-x-transparent border-b-[8px] border-b-gray-600 rotate-90 order-2 mr-5"></button>
+                    <button disabled={quantity <= 1} onClick={() => setQuantity(quantity-1)} className="h-0 w-0 ml-auto order-2 border-x-8 border-x-transparent border-b-[8px] border-b-gray-600 -rotate-90"/>
+                    <p className="order-2 mx-5">{quantity}</p>
+                    <button onClick={() => setQuantity(quantity+1)} className="h-0 w-0 border-x-8 border-x-transparent border-b-[8px] border-b-gray-600 rotate-90 order-2 mr-5"/>
                 </div>
-            <button onClick={() => {openCart(value => !value); closeItemDetails(value => !value)}}
+            <button onClick={() => {
+                    openCart(value => !value);
+                    closeItemDetails(value => !value);
+                    onClickItemAdded()
+                }}
                     className="w-3/4 hover:bg-gray-600 rounded-sm py-5 mx-auto bg-gray-900 text-white">Add to cart</button>
             <button className="inline-block no-underline hover:text-black mt-4">
 
