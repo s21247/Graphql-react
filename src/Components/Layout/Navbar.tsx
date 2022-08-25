@@ -1,6 +1,22 @@
-import React from 'react';
+import React, {useState} from 'react';
+import CartPanel from "../Features/cart/CartPanel";
+import ShopModal from "../Hooks/ShopModal";
+import {useSelector} from "react-redux";
+import {selectShopCart} from "../Features/cart/cartSlice";
 
 const Navbar = () => {
+    const [cartOpen, setCartOpen] = useState<boolean>(false);
+    const handleClickShopModal = () => setCartOpen((current) => !current);
+    const itemsInCart = useSelector(selectShopCart)
+    const additionalQuantity = itemsInCart
+        .filter(item => item.quantity! >= 2)
+        .map(item => item.quantity)
+        .reduce((prev,curr) => prev! + curr!, 0)
+    const onlyOneQuantityItems = itemsInCart
+        .filter(item => item.quantity! === 1)
+
+    console.log(additionalQuantity);
+
     return (
        <>
            <nav id="header" className="w-full z-10 top-0 py-1 sticky bg-white">
@@ -38,7 +54,7 @@ const Navbar = () => {
                        </a>
                    </div>
 
-                   <div className="order-2 md:order-3 flex items-center" id="nav-content">
+                   <div className="order-2 md:order-3 flex items-center" id="nav-content" >
 
                        <a className="inline-block no-underline hover:text-black" href="/">
                            <svg className="fill-current text-gray-500 hover:text-black" xmlns="http://www.w3.org/2000/svg" width="24"
@@ -49,7 +65,8 @@ const Navbar = () => {
                            </svg>
                        </a>
 
-                       <a className="pl-3 inline-block no-underline hover:text-black" href="/">
+                       <button onClick={handleClickShopModal} className="pl-3 inline-block no-underline hover:text-black">
+                               <p className="absolute top-0.5 pl-5 pt-2 text-lg text-yellow-500">{onlyOneQuantityItems.length + additionalQuantity!}</p>
                            <svg className="fill-current text-gray-500 hover:text-black" xmlns="http://www.w3.org/2000/svg" width="24"
                                 height="24" viewBox="0 0 24 24">
                                <path
@@ -57,7 +74,7 @@ const Navbar = () => {
                                <circle cx="10.5" cy="18.5" r="1.5"/>
                                <circle cx="17.5" cy="18.5" r="1.5"/>
                            </svg>
-                       </a>
+                       </button>
                        <a className="pl-3 inline-block no-underline hover:text-black" href="/favorites">
                        <svg
                            className="h-6 w-6 fill-current text-gray-500 hover:text-black"
@@ -71,6 +88,9 @@ const Navbar = () => {
                    </div>
                </div>
            </nav>
+           <ShopModal open={cartOpen} onClose={handleClickShopModal}>
+               <CartPanel/>
+           </ShopModal>
        </>
     );
 };

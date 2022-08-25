@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useCallback, useState} from 'react';
 import {Product} from "../Models/Product.interface";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {cartItemAdded} from "../Features/cart/cartSlice";
+import {favoritesItemAdded, favoritesItemRemoved, selectFavoritesItems} from "../Features/favorites/favoritesSlice";
 
 interface Prop{
     openCart:  React.Dispatch<React.SetStateAction<Boolean>>;
@@ -12,6 +13,17 @@ type Props = Prop & Product
 const StoreItemDetails = ({id,image,name,price,description,openCart, closeItemDetails}: Props) => {
     const dispatch = useDispatch()
     const [quantity,setQuantity] = useState<number>(1)
+    const favoriteItems = useSelector(selectFavoritesItems)
+    const checkIfItemIsInArray = useCallback(() => {
+        return favoriteItems.find(item => item.id === id)
+    },[favoriteItems, id])
+    const isFavorite = checkIfItemIsInArray()
+    const onClickAddFavoriteItem = () => {
+        if(!checkIfItemIsInArray())
+            dispatch(favoritesItemAdded(id,image,description,name,price,true))
+        else
+            dispatch(favoritesItemRemoved(id))
+    }
     const onClickItemAdded = () => {
             dispatch(cartItemAdded(id,image,description,price,name,quantity))
     }
@@ -33,13 +45,16 @@ const StoreItemDetails = ({id,image,name,price,description,openCart, closeItemDe
             <button onClick={() => {
                     openCart(value => !value);
                     closeItemDetails(value => !value);
-                    onClickItemAdded()
+                    onClickItemAdded();
                 }}
                     className="w-3/4 hover:bg-gray-600 rounded-sm py-5 mx-auto bg-gray-900 text-white">Add to cart</button>
-            <button className="inline-block no-underline hover:text-black mt-4">
+            <button className="inline-block no-underline hover:text-black mt-4" onClick={() => {
+                onClickAddFavoriteItem();
+
+            }}>
 
             <svg
-                className="h-6 w-6 fill-current text-gray-500 hover:text-black mx-20"
+                className={`h-6 w-6 fill-current text-gray-500 hover:text-red-400 mx-20 ${isFavorite ? 'text-red-400' : null}`}
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
             >

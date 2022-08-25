@@ -8,16 +8,16 @@ const StoreNavbar = ({ categories }: Categories) => {
         <div className="w-full container mx-auto flex flex-wrap items-center justify-start mt-0 px-2 py-3">
           <a
             key={"all"}
-            className="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl "
+            className="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl z-10"
             href="/"
           >
             All
           </a>
           {categories.map((category) => (
             <a
-              key={category.id}
-              className="uppercase tracking-wide no-underline hover:no-underline mx-5 font-bold text-gray-800 text-xl "
-              href={category.name}
+              key={category.name}
+              className="uppercase tracking-wide no-underline hover:no-underline mx-5 font-bold text-gray-800 text-xl z-10"
+              href={`/product-category/${category.name}`}
             >
               {category.name}
             </a>

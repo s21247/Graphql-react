@@ -5,7 +5,6 @@ const About = () => {
     return (
         <>
             <AboutDescription />
-            <h5>Contact form ... soon</h5>
         </>
     );
 };

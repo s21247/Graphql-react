@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useCallback, useState} from "react";
 import { Product } from "../Models/Product.interface";
 import ItemModal from "../Hooks/ItemModal";
 import StoreItemDetails from "./StoreItemDetails";
@@ -14,13 +14,12 @@ const StoreItem = ({id,image,name,description,price}: Product) => {
   const dispatch = useDispatch()
   const favoriteItems = useSelector(selectFavoritesItems)
 
-
-    const handleMouseHover = () => setIsHovering((current) => !current);
+  const handleMouseHover = () => setIsHovering((current) => !current);
   const handleClickItemModal = () => setIsOpen((current) => !current);
   const handleClickShopModal = () => setCartOpen((current) => !current);
-    const checkIfItemIsInArray = () => {
+  const checkIfItemIsInArray = useCallback(() => {
         return favoriteItems.find(item => item.id === id)
-    }
+    },[favoriteItems, id])
     const isFavorite = checkIfItemIsInArray()
     const onClickAddFavoriteItem = () => {
       if(!checkIfItemIsInArray())
@@ -43,7 +42,7 @@ const StoreItem = ({id,image,name,description,price}: Product) => {
                   onClickAddFavoriteItem();
               }}>
         <svg
-          className={`h-6 w-6 text-gray-500 fill-current ${isFavorite ? 'text-red-400' : null}`}
+          className={`h-6 w-6 text-gray-500 fill-current hover:text-red-400 ${isFavorite ? 'text-red-400' : null}`}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
           fill="gray-500"

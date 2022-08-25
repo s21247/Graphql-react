@@ -1,33 +1,212 @@
-import React from "react";
-
+import React, {useState} from "react";
+import Image1 from '../../images/Image3.jpg'
+import Image2 from '../../images/Image1.jpg'
+import Image3 from '../../images/Image2.jpg'
+import useImagePreloader from "../Hooks/useImagePreloader";
 const MainImage = () => {
-  const imageName: string =
-    "https://savoy-webstack.netdna-ssl.com/wp-content/uploads/2015/08/slider-pendant-lighting.jpg";
+  const preloadSrcList: string[] = [Image1,Image2,Image3]
+  const imageName: string = Image1
+  const imageName2: string = Image2
+  const imageName3: string = Image3
+  const [isRadio, setIsRadio] = useState<number>(1);
+
+  const {imagesPreloaded} = useImagePreloader(preloadSrcList)
+    if(!imagesPreloaded){
+      return <p>Preloading assets</p>
+    }
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      setIsRadio(+e.currentTarget.value)
+    }
   return (
-    <div>
-      <section
-        className="w-full mx-auto bg-nordic-gray-light flex pt-12 md:pt-0 md:items-center bg-cover bg-right"
-        style={{
-          maxWidth: "max-width:1600px",
-          height: " 42rem",
-          backgroundImage: "url(" + imageName + ")",
-        }}
-      >
-        <div className="container mx-auto">
-          <div className="flex flex-col w-full lg:w-1/2 justify-center items-start  px-6 tracking-wide">
-            <h1 className="text-white text-2xl my-4">
-              Contemporary Pendant <br />
-              Lightning
-            </h1>
-            <a
-              className="text-white text-xl inline-block underline border-gray-600 leading-relaxed hover:text-yellow "
-              href="/"
-            >
-              products
-            </a>
+    <div
+      className="carousel relative container mx-auto h-full"
+      style={{
+        maxWidth: "2000px",
+      }}
+    >
+
+      <div className="carousel-inner overflow-hidden relative w-full">
+        <input
+          className="carousel-open"
+          type="radio"
+          id="carousel-1"
+          name="carousel"
+          value={1}
+          aria-hidden="true"
+          hidden={true}
+          checked={isRadio===1}
+          onChange={handleChange}
+        />
+        <div
+          className="carousel-item absolute opacity-0 bg-cover"
+          style={{
+            height: "60rem",
+          }}
+        >
+          <div
+            className="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-bottom"
+            style={{
+              backgroundImage: "url(" + imageName2 + ")",
+            }}
+          >
+            <div className="container mx-auto">
+              <div className="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
+                <p className="text-black text-2xl my-4">
+                  Stripy Zig Zag Jigsaw Pillow and Duvet Set
+                </p>
+                <a
+                  className="text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black"
+                  href="/"
+                >
+                  view product
+                </a>
+              </div>
+            </div>
           </div>
         </div>
-      </section>
+        <label
+          htmlFor="carousel-3"
+          className="prev control-1 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center inset-y-0 left-0 my-auto"
+        >
+          ‹
+        </label>
+        <label
+          htmlFor="carousel-2"
+          className="next control-1 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900 leading-tight text-center inset-y-0 right-0 my-auto"
+        >
+          ›
+        </label>
+
+        <input
+            className="carousel-open"
+            type="radio"
+            id="carousel-2"
+            name="carousel"
+            aria-hidden="true"
+            hidden={true}
+            value={2}
+            checked={isRadio===2}
+            onChange={handleChange}
+        />
+        <div
+            className="carousel-item absolute opacity-0"
+            style={{
+              height: "60rem",
+            }}
+        >
+          <div
+              className="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-bottom"
+              style={{
+                backgroundImage: "url(" + imageName + ")",
+              }}
+          >
+            <div className="container w-full mx-auto">
+              <div className="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
+                <p className="text-black text-2xl my-4">
+                  Light Pendant Lightning
+                </p>
+                <a
+                    className="relative text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black"
+                    href="/"
+                >
+                  view product
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <label
+          htmlFor="carousel-1"
+          className="prev control-2 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center inset-y-0 left-0 my-auto"
+        >
+          ‹
+        </label>
+        <label
+          htmlFor="carousel-3"
+          className="next control-2 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center inset-y-0 right-0 my-auto"
+        >
+          ›
+        </label>
+
+        <input
+          className="carousel-open"
+          type="radio"
+          id="carousel-3"
+          name="carousel"
+          aria-hidden="true"
+          hidden={true}
+          checked={isRadio===3}
+          onChange={handleChange}
+          value={3}
+        />
+        <div
+          className="carousel-item absolute opacity-0"
+          style={{
+            height: "60rem",
+          }}
+        >
+          <div
+            className="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-bottom"
+            style={{
+              backgroundImage: "url(" + imageName3 + ")",
+            }}
+          >
+            <div className="container mx-auto">
+              <div className="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
+                <p className="text-black text-2xl my-4">
+                  Brown and blue hardbound book
+                </p>
+                <a
+                  className="relative text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black"
+                  href="/"
+                >
+                  view product
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <label
+          htmlFor="carousel-2"
+          className="prev control-3 w-10 h-10 ml-2 md:ml-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center  inset-y-0 left-0 my-auto"
+        >
+          ‹
+        </label>
+        <label
+          htmlFor="carousel-1"
+          className="next control-3 w-10 h-10 mr-2 md:mr-10 absolute cursor-pointer hidden text-3xl font-bold text-black hover:text-white rounded-full bg-white hover:bg-gray-900  leading-tight text-center inset-y-0 right-0 my-auto"
+        >
+          ›
+        </label>
+
+        <ol className="carousel-indicators">
+          <li className="inline-block mr-3">
+            <label
+              htmlFor="carousel-1"
+              className="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900"
+            >
+              •
+            </label>
+          </li>
+          <li className="inline-block mr-3">
+            <label
+              htmlFor="carousel-2"
+              className="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900"
+            >
+              •
+            </label>
+          </li>
+          <li className="inline-block mr-3">
+            <label
+              htmlFor="carousel-3"
+              className="carousel-bullet cursor-pointer block text-4xl text-gray-400 hover:text-gray-900"
+            >
+              •
+            </label>
+          </li>
+        </ol>
+      </div>
     </div>
   );
 };

@@ -9,14 +9,14 @@ const FavoriteItem = ({id,image,name,price,isFavorite}: FavoritesCart) => {
         dispatch(favoritesItemRemoved(id))
     }
     return (
-        <div className="flex relative w-full h-48 flex-row my-2 text-lg items-center border-b-2 border-gray-500">
-            <img className="w-28 h-36 " src={image} alt={"icon"}/>
-            <p className="ml-4">{price}</p>
-            <p className="ml-auto float-right">${name}.00</p>
-            <div className="float-right ml-auto ">
-            <button onClick={onClickRemoveFavorite} className="mr-16 w-18 text-lg">
+        <div className="relative flex w-full h-48 flex-row text-lg items-center  border-b-2 border-gray-500">
+            <img className="w-28 h-42 my-auto" src={image} alt={"icon"}/>
+            <p className="ml-2 w-1/6">{price}</p>
+            <p className="float-right ml-auto w-1/6">${name}.00</p>
+            <div className="float-right ml-auto">
+            <button onClick={onClickRemoveFavorite} className="mr-16 w-18">
                 <svg
-                    className={`h-6 w-6 text-gray-500 fill-current ${isFavorite ? 'text-red-400' : null}`}
+                    className={`h-8 w-8 text-gray-500 fill-current ${isFavorite ? 'text-red-400' : null}`}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                 >
