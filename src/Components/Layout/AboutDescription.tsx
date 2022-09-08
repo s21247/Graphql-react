@@ -7,13 +7,13 @@ const AboutDescription = () => {
         <div className="container py-8 px-6 mx-auto">
           <a
             className="uppercase tracking-wide no-underline hover:no-underline font-bold text-gray-800 text-xl mb-8"
-            href="#"
+            href="/"
           >
             About
           </a>
 
           <p className="mt-8 mb-8">
-            This template is inspired by the stunning nordic minamalist design -
+            This template is inspired by the stunning nordic minimalist design -
             in particular:
             <br />
             <a
@@ -41,7 +41,7 @@ const AboutDescription = () => {
           </p>
 
           <p className="mb-8">
-            Lorem ipsum dolor sit amet, consectetur <a href="#">random link</a>{" "}
+            Lorem ipsum dolor sit amet, consectetur <a href="/">random link</a>{" "}
             adipiscing elit, sed do eiusmod tempor incididunt ut labore et
             dolore magna aliqua. Vel risus commodo viverra maecenas accumsan
             lacus vel facilisis volutpat. Vitae aliquet nec ullamcorper sit.

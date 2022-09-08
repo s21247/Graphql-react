@@ -1,29 +1,57 @@
-import React, {useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import Image1 from '../../images/Image3.jpg'
 import Image2 from '../../images/Image1.jpg'
 import Image3 from '../../images/Image2.jpg'
 import useImagePreloader from "../Hooks/useImagePreloader";
 const MainImage = () => {
   const preloadSrcList: string[] = [Image1,Image2,Image3]
-  const imageName: string = Image1
-  const imageName2: string = Image2
-  const imageName3: string = Image3
-  const [isRadio, setIsRadio] = useState<number>(1);
+  const [obj,setObj] = useState<{currentImage: number,images: string[] }>({
+    currentImage: 1,
+    images: preloadSrcList
+  })
+
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    setObj({
+      currentImage: +e.currentTarget.value,
+      images: [...obj.images]
+    })
+  },[obj])
+
+  useEffect(() => {
+    const switchImage = () => {
+      if(obj.currentImage < obj.images.length - 1) {
+        setObj({
+          currentImage: obj.currentImage + 1,
+          images: [...obj.images]
+        })
+      }else {
+        setObj({
+          currentImage: 0,
+          images: [...obj.images]
+        })
+      }
+    }
+    const interval = setInterval(() => {
+      switchImage()
+    },25000)
+
+    return () => clearInterval(interval)
+
+  },[obj,handleChange])
 
   const {imagesPreloaded} = useImagePreloader(preloadSrcList)
-    if(!imagesPreloaded){
-      return <p>Preloading assets</p>
-    }
+  if(!imagesPreloaded){
+    return <p>Preloading assets</p>
+  }
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      setIsRadio(+e.currentTarget.value)
-    }
+
   return (
     <div
       className="carousel relative container mx-auto h-full"
       style={{
         maxWidth: "2000px",
       }}
+
     >
 
       <div className="carousel-inner overflow-hidden relative w-full">
@@ -35,7 +63,7 @@ const MainImage = () => {
           value={1}
           aria-hidden="true"
           hidden={true}
-          checked={isRadio===1}
+          checked={obj.currentImage===1}
           onChange={handleChange}
         />
         <div
@@ -47,7 +75,7 @@ const MainImage = () => {
           <div
             className="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-bottom"
             style={{
-              backgroundImage: "url(" + imageName2 + ")",
+              backgroundImage: "url(" + obj.images[1] + ")",
             }}
           >
             <div className="container mx-auto">
@@ -86,7 +114,7 @@ const MainImage = () => {
             aria-hidden="true"
             hidden={true}
             value={2}
-            checked={isRadio===2}
+            checked={obj.currentImage===2}
             onChange={handleChange}
         />
         <div
@@ -98,7 +126,7 @@ const MainImage = () => {
           <div
               className="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-bottom"
               style={{
-                backgroundImage: "url(" + imageName + ")",
+                backgroundImage: "url(" + obj.images[0] + ")",
               }}
           >
             <div className="container w-full mx-auto">
@@ -136,9 +164,9 @@ const MainImage = () => {
           name="carousel"
           aria-hidden="true"
           hidden={true}
-          checked={isRadio===3}
+          checked={obj.currentImage===0}
           onChange={handleChange}
-          value={3}
+          value={0}
         />
         <div
           className="carousel-item absolute opacity-0"
@@ -149,7 +177,7 @@ const MainImage = () => {
           <div
             className="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-bottom"
             style={{
-              backgroundImage: "url(" + imageName3 + ")",
+              backgroundImage: "url(" + obj.images[2] + ")",
             }}
           >
             <div className="container mx-auto">

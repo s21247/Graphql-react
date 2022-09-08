@@ -6,6 +6,8 @@ import Favorites from "../../Pages/Favorites";
 import StoreItemList from "../Items/StoreItemList";
 import GetProducts from "../Hooks/GetProducts";
 import CategoryItemList from "../Items/CategoryItemList";
+import Cart from "../../Pages/Cart";
+export const cartPage: string = '/cart'
 const Routing = () => {
     const favoritesPage: string = '/favorites'
     const aboutPage: string = '/about'
@@ -20,6 +22,7 @@ const Routing = () => {
             </Route>
             <Route path={favoritesPage} element={<Favorites/>}/>
             <Route path={aboutPage} element={<About/>}/>
+            <Route path={cartPage} element={<Cart/>}/>
         </Routes>
     );
 };

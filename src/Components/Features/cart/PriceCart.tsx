@@ -1,11 +1,19 @@
 import React from 'react';
 import {useSelector} from "react-redux";
 import {selectShopCart} from "./cartSlice";
-const PriceCart = () => {
+import {useNavigate} from "react-router-dom";
+import {cartPage} from "../../Routing/Routing";
+import {CartPanelInterface} from "./CartPanel";
+const PriceCart = ({onClose}: CartPanelInterface) => {
     const shopPrice = useSelector(selectShopCart)
     const totalPrice = shopPrice
         .map(item => item.price! * item.quantity!)
         .reduce((prev,current) => prev + current,0)
+    const navigate = useNavigate()
+
+    const routeChange = () => {
+        navigate(cartPage)
+    }
 
     return (
         <div className="absolute bottom-0 flex flex-col w-full text-white h-80 z-200 bg-gray-800">
@@ -16,7 +24,15 @@ const PriceCart = () => {
                 </div>
             </div>
             <div className="flex flex-col w-full h-2/3 items-center pt-7 my-auto ">
-                <button className="w-4/5 hover:bg-gray-600 py-5 mb-6 mx-auto bg-gray-900 text-white">View Cart</button>
+                <button
+                    className="w-4/5 hover:bg-gray-600 py-5 mb-6 mx-auto bg-gray-900 text-white"
+                    onClick={() => {
+                        routeChange()
+                        onClose(value => !value)
+                    }}
+                >
+                    View Cart
+                </button>
                 <button className="w-4/5 hover:bg-gray-600 py-5 mb-6 mx-auto bg-gray-900 text-white">Checkout</button>
             </div>
         </div>

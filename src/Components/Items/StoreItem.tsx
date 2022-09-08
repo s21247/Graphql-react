@@ -75,7 +75,7 @@ const StoreItem = ({id,image,name,description,price}: Product) => {
         />
       </ItemModal>
       <ShopModal open={cartOpen} onClose={handleClickShopModal}>
-        <CartPanel/>
+        <CartPanel onClose={handleClickShopModal}/>
       </ShopModal>
     </>
   );

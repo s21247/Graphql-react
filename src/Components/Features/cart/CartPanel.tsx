@@ -5,7 +5,10 @@ import { ItemCart, selectShopCart } from "./cartSlice";
 import { useDispatch } from "react-redux";
 import { cartItemRemoved, cartItemDecrementQuantity, cartItemIncrementQuantity } from "./cartSlice";
 
-const CartPanel = () => {
+export interface CartPanelInterface  {
+  onClose:  React.Dispatch<React.SetStateAction<Boolean>>
+}
+const CartPanel = ({onClose}: CartPanelInterface) => {
   const dispatch = useDispatch();
   const shopCart = useSelector(selectShopCart);
 
@@ -74,7 +77,7 @@ const CartPanel = () => {
           );
         })}
       </div>
-      <PriceCart />
+      <PriceCart onClose={onClose} />
     </>
   );
 };
