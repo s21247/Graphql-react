@@ -7,7 +7,10 @@ import StoreItemList from "../Items/StoreItemList";
 import GetProducts from "../Hooks/GetProducts";
 import CategoryItemList from "../Items/CategoryItemList";
 import Cart from "../../Pages/Cart";
+import Checkout from "../Features/checkout/Checkout";
 export const cartPage: string = '/cart'
+export const checkoutPage: string = '/checkout'
+
 const Routing = () => {
     const favoritesPage: string = '/favorites'
     const aboutPage: string = '/about'
@@ -23,6 +26,7 @@ const Routing = () => {
             <Route path={favoritesPage} element={<Favorites/>}/>
             <Route path={aboutPage} element={<About/>}/>
             <Route path={cartPage} element={<Cart/>}/>
+            <Route path={checkoutPage} element={<Checkout/>}/>
         </Routes>
     );
 };

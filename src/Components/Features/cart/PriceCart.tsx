@@ -4,11 +4,10 @@ import {selectShopCart} from "./cartSlice";
 import {useNavigate} from "react-router-dom";
 import {cartPage} from "../../Routing/Routing";
 import {CartPanelInterface} from "./CartPanel";
+import {countTotalPrice} from "../../Helpers/cartHelpers";
 const PriceCart = ({onClose}: CartPanelInterface) => {
     const shopPrice = useSelector(selectShopCart)
-    const totalPrice = shopPrice
-        .map(item => item.price! * item.quantity!)
-        .reduce((prev,current) => prev + current,0)
+    const totalPrice = countTotalPrice(shopPrice)
     const navigate = useNavigate()
 
     const routeChange = () => {

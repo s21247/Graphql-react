@@ -2,28 +2,13 @@ import React from "react";
 import PriceCart from "./PriceCart";
 import { useSelector } from "react-redux";
 import { ItemCart, selectShopCart } from "./cartSlice";
-import { useDispatch } from "react-redux";
-import { cartItemRemoved, cartItemDecrementQuantity, cartItemIncrementQuantity } from "./cartSlice";
+import {onClickItemIncrementValue, onClickItemDecrementValue, onClickItemRemove} from "../../Helpers/cartHelpers";
 
 export interface CartPanelInterface  {
   onClose:  React.Dispatch<React.SetStateAction<Boolean>>
 }
 const CartPanel = ({onClose}: CartPanelInterface) => {
-  const dispatch = useDispatch();
   const shopCart = useSelector(selectShopCart);
-
-  const onClickItemRemove = (id: ItemCart["id"]) => {
-    if (id)
-      dispatch(cartItemRemoved(id));
-  };
-  const onClickItemDecrementValue = (id: ItemCart["id"]) => {
-    if(id)
-    dispatch(cartItemDecrementQuantity(id));
-  };
-  const onClickIncrementValue = (id: ItemCart["id"]) => {
-    if (id)
-      dispatch(cartItemIncrementQuantity(id))
-  }
   return (
     <>
       <div className="">
@@ -64,7 +49,7 @@ const CartPanel = ({onClose}: CartPanelInterface) => {
                       />
                       <p className="order-2">{item.quantity}</p>
                       <button
-                          onClick={() => onClickIncrementValue(item.id as ItemCart["id"])}
+                          onClick={() => onClickItemIncrementValue(item.id as ItemCart["id"])}
                           className="h-0 w-0 border-x-8 border-x-transparent border-b-[8px] border-b-gray-600 rotate-90 order-2 mr-5" />
                       <p className="ml-auto order-2 mr-8">
                         ${item.price! * item.quantity!}.00
