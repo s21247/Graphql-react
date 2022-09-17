@@ -7,7 +7,8 @@ import StoreItemList from "../Items/StoreItemList";
 import GetProducts from "../Hooks/GetProducts";
 import CategoryItemList from "../Items/CategoryItemList";
 import Cart from "../../Pages/Cart";
-import Checkout from "../Features/checkout/Checkout";
+import Checkout from "../../Pages/Checkout";
+import Order from "../../Pages/Order";
 export const cartPage: string = '/cart'
 export const checkoutPage: string = '/checkout'
 
@@ -27,6 +28,7 @@ const Routing = () => {
             <Route path={aboutPage} element={<About/>}/>
             <Route path={cartPage} element={<Cart/>}/>
             <Route path={checkoutPage} element={<Checkout/>}/>
+            <Route path={"checkout/order/:orderId"} element={<Order/>}/>
         </Routes>
     );
 };

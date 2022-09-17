@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Category} from "../Models/Category.interface";
-import Search from "./Search";
+import Search from "./search/Search";
 import {Product} from "../Models/Product.interface";
-import FilterSearch from "./FilterSearch";
+import FilterSearch from "./search/FilterSearch";
 
 interface Props {
   categories: Category[];

@@ -1,24 +1,24 @@
-import React, {useState} from 'react';
-import {useSelector} from "react-redux";
+import React, {Dispatch, SetStateAction, useState} from 'react';
+import {useDispatch, useSelector} from "react-redux";
 import {selectShopCart} from "../Features/cart/cartSlice";
-import ChangeAddress from "./inputsShipping/ChangeAddress";
 import {countTotalPrice} from "../Helpers/cartHelpers";
-import RadioInput from "./inputsShipping/RadioInput";
 import {useNavigate} from "react-router-dom";
 import {checkoutPage} from "../Routing/Routing";
 import Subtotal from "./Subtotal";
+import {addOrder} from "../Features/checkout/checkoutSlice";
 
-const Shipping = () => {
+interface props {
+    display?: boolean;
+    orderId: string
+    shipping: { value: string; town: "California"; zip: ""; country: "Usa" };
+    setShipping: Dispatch<SetStateAction<{ value: string; town: "California"; zip: ""; country: "Usa"; }>>
+    express: string;
+    standard: string
+}
+const Shipping = ({display=true,orderId,shipping,setShipping,express,standard} : props) => {
     const [isOpen,setIsOpen] = useState<boolean>(false)
-    const express: string = "19"
-    const standard: string = "10"
     const navigate = useNavigate()
-    const [shipping,setShipping] = useState<{value: string,town: "California",zip:"",country: "Usa"}>({
-        value: standard,
-        town: "California",
-        zip: "",
-        country: "Usa"
-    })
+    const dispatch = useDispatch();
 
     const shopPrice = useSelector(selectShopCart)
     const totalPrice = countTotalPrice(shopPrice)
@@ -47,8 +47,8 @@ const Shipping = () => {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        //dispatch here
-        console.log(JSON.stringify(shipping))
+        console.log(JSON.stringify(shipping));
+        dispatch(addOrder(orderId,shipping.country,shipping.town,shipping.zip,shipping.value,new Date().toDateString()))
     }
     const {country,...otherProps} = shipping
 
@@ -56,10 +56,12 @@ const Shipping = () => {
 
     return (
         <>
-        <form onSubmit={handleSubmit} >
+        <form
+            id={"shipping"}
+            onSubmit={handleSubmit} >
         <div className="border border-gray-300 items-center w-full font-semibold">
             <Subtotal
-                display={true}
+                display={display}
                 onClick={handleOnClick}
                 open={isOpen}
                 handleChange={handleChange}
@@ -67,6 +69,7 @@ const Shipping = () => {
                 selectChange={selectChange}
                 canSave={canSave} standard={standard}
                 express={express} totalPrice={totalPrice}
+                orderId={orderId}
             />
             <div className="flex flex-row w-full py-5 border-t-2 border-gray-300 items-center px-5">
                 <p>Total</p>
@@ -75,11 +78,13 @@ const Shipping = () => {
             </div>
         </div>
         </form>
-    <button
-        onClick={() => navigate(checkoutPage)}
-        className="bg-black w-full items-center text-white py-4 mt-4 hover:bg-gray-800">
-        Proceed to checkout
-    </button>
+            {   display ? <button
+                    onClick={() => navigate(checkoutPage)}
+                    className="bg-black w-full items-center text-white py-4 mt-4 hover:bg-gray-800">
+                    Proceed to checkout
+                </button> : null
+            }
+
     </>
     );
 };

@@ -1,12 +1,15 @@
 import React from "react";
 import SelectCountry from "./SelectCountry";
 
+
 type props = {
   open: boolean;
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   shipping: { value: string; town: "California"; zip: ""; country: "Usa" };
   selectChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
   canSave: Boolean;
+  onClick: React.Dispatch<React.SetStateAction<boolean>>;
+
 };
 const ChangeAddress = ({
   open,
@@ -14,9 +17,11 @@ const ChangeAddress = ({
   shipping,
   selectChange,
   canSave,
+    onClick
 }: props) => {
-  if (!open) return null;
-  return (
+
+    if (!open) return null;
+    return (
     <div className="flex flex-col w-full items-center mb-4">
       <SelectCountry selectChange={selectChange} shipping={shipping} />
       <input
@@ -41,7 +46,9 @@ const ChangeAddress = ({
         maxLength={5}
       />
       <button
+          form={"shipping"}
         disabled={!canSave}
+        // onClick={() => onClick(val => !val)}
         className="py-4 w-full bg-black text-white mt-2 hover:bg-gray-800"
       >
         Save Changes

@@ -1,12 +1,14 @@
 import {combineReducers, configureStore} from "@reduxjs/toolkit";
 import shopReducer from '../Features/cart/cartSlice'
 import favoriteReducer from "../Features/favorites/favoritesSlice";
+import checkoutReducer from "../Features/checkout/checkoutSlice";
 import storage from "redux-persist/lib/storage"
 import {persistReducer, FLUSH,REGISTER,PERSIST,PAUSE,REHYDRATE,PURGE} from "redux-persist"
 
 const reducers = combineReducers({
     cart: shopReducer,
-    favorites: favoriteReducer
+    favorites: favoriteReducer,
+    order: checkoutReducer,
 })
 
 const persistConfig = {

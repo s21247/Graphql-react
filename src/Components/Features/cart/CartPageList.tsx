@@ -3,7 +3,10 @@ import {useSelector} from "react-redux";
 import {selectShopCart} from "./cartSlice";
 import CartPageItem from "./CartPageItem";
 
-const CartPageList = () => {
+interface props {
+    display?: boolean
+}
+const CartPageList = ({display}: props) => {
     const itemsInCart = useSelector(selectShopCart)
     return (
         <>
@@ -17,6 +20,7 @@ const CartPageList = () => {
                                 price={item.price}
                                 name={item.name}
                                 quantity={item.quantity}
+                                display={display}
                             />
                         </Fragment>
                     })

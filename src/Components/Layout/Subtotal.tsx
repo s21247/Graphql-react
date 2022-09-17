@@ -1,6 +1,10 @@
 import React from "react";
 import RadioInput from "./inputsShipping/RadioInput";
 import ChangeAddress from "./inputsShipping/ChangeAddress";
+import {orderId} from "../../Pages/Checkout";
+import {useSelector} from "react-redux";
+import {selectCheckoutOrder} from "../Features/checkout/checkoutSlice";
+
 
 interface props {
   open: boolean;
@@ -13,6 +17,7 @@ interface props {
   totalPrice: number;
   onClick: React.Dispatch<React.SetStateAction<boolean>>;
   display: boolean;
+  orderId:string | undefined
 }
 const Subtotal = ({
   open,
@@ -25,7 +30,11 @@ const Subtotal = ({
   totalPrice,
   onClick,
   display,
+    orderId
 }: props) => {
+    const order = useSelector(selectCheckoutOrder)
+    const findOrder = order.find(item => item.id === orderId)
+
   const content = (
     <>
       <p className="pt-5">
@@ -57,6 +66,7 @@ const Subtotal = ({
         shipping={shipping}
         selectChange={selectChange}
         canSave={canSave}
+        onClick={onClick}
       />
     </>
   );
@@ -78,14 +88,14 @@ const Subtotal = ({
           name={"value"}
           value={standard}
           id={"Standard"}
-          checkVal={shipping.value}
+          checkVal={findOrder ? findOrder.value : shipping.value}
           inputName={"standard"}
         />
         <RadioInput
           name={"value"}
           handleChange={handleChange}
           id={"Express"}
-          checkVal={shipping.value}
+          checkVal={findOrder ? findOrder.value : shipping.value}
           value={express}
           inputName={"express"}
         />

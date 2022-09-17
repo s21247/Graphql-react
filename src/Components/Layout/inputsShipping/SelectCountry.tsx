@@ -1,14 +1,16 @@
 import React from 'react';
 
 interface props {
-    shipping: {value: string,town: "California",zip:"",country: "Usa"}
-    selectChange: (event: React.ChangeEvent<HTMLSelectElement>) => void
+    shipping?: {value: string,town: "California",zip:"",country: "Usa"}
+    selectChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void
+    country?: string
 }
 
-const SelectCountry = ({shipping, selectChange}: props) => {
+const SelectCountry = ({shipping, selectChange,country}: props) => {
     return (
         <>
-            <select id="country" name="country" value={shipping.country} onChange={selectChange} defaultChecked={shipping.country === "Usa"} className="form-control w-full py-4 pl-3 mb-2 border border-gray-300 outline-0">
+            <select id="country" name="country" value={country ? country : shipping!.country} onChange={selectChange}
+                    className="form-control w-full py-4 pl-3 mb-2 border border-gray-300 outline-0">
                 <option value="Usa">United States</option>
                 <option value="Afghanistan">Afghanistan</option>
                 <option value="Åland Islands">Åland Islands</option>

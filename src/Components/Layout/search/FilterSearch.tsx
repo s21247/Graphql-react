@@ -1,5 +1,5 @@
 import React from 'react';
-import {Product} from "../Models/Product.interface";
+import {Product} from "../../Models/Product.interface";
 
 interface Props {
     searchInput: string;

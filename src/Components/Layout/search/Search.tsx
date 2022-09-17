@@ -1,6 +1,6 @@
 import React from "react";
-import GetProducts from "../Hooks/GetProducts";
-import { Product } from "../Models/Product.interface";
+import GetProducts from "../../Hooks/GetProducts";
+import { Product } from "../../Models/Product.interface";
 
 interface Props {
   open: boolean;
