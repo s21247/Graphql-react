@@ -1,10 +1,11 @@
 import React from 'react';
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import {useSelector} from "react-redux";
 import {CheckoutOrder, selectCheckoutOrder} from "../Components/Features/checkout/checkoutSlice";
 import {ItemCart, selectShopCart} from "../Components/Features/cart/cartSlice";
 import {countTotalPrice} from "../Components/Helpers/cartHelpers";
 import Footer from "../Components/Layout/Footer";
+import {persistor} from "../index";
 
 const Order = () => {
     const {orderId} = useParams()
@@ -12,6 +13,14 @@ const Order = () => {
     const findOrder = getOrder.find(item => item.id === orderId)
     const getCard = useSelector(selectShopCart)
     const totalPrice = countTotalPrice(getCard)
+    const navigate = useNavigate()
+
+    const purge = () => {
+        persistor.purge()
+    }
+    function refreshPage() {
+        window.location.reload();
+    }
     return (
         <>
         <div className="container my-36 flex flex-col mx-auto items-stretch">
@@ -99,6 +108,18 @@ const Order = () => {
                         </div>
                     ))
                 }
+                <div className="w-1/2 mx-auto">
+                    <p className="text-red-500"><span className="text-xl">NOTE! </span>this button removes all the data from storage due to the fact there is no login so it can't be cleared on logout</p>
+                <button
+                    className="bg-black w-full items-center text-white py-4 mt-4 hover:bg-gray-800"
+                    onClick={() => {
+                        purge()
+                        navigate("/")
+                        setTimeout(() => {
+                            refreshPage()
+                        },1000)
+                    }}>purge</button>
+                </div>
             </div>
                 </div>
             <Footer styles={{position: "relative"}}/>

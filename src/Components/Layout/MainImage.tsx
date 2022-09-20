@@ -47,9 +47,9 @@ const MainImage = () => {
 
   return (
     <div
-      className="carousel relative container mx-auto h-full"
+      className="carousel relative container mx-auto h-full "
       style={{
-        maxWidth: "2000px",
+        maxWidth:"125rem"
       }}
 
     >
@@ -67,9 +67,10 @@ const MainImage = () => {
           onChange={handleChange}
         />
         <div
-          className="carousel-item absolute opacity-0 bg-cover"
+          className="carousel-item absolute opacity-0 bg-cover min-h-20 max-h-128"
           style={{
-            height: "60rem",
+            height: "60rem"
+
           }}
         >
           <div

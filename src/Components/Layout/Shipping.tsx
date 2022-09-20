@@ -47,8 +47,8 @@ const Shipping = ({display=true,orderId,shipping,setShipping,express,standard} :
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log(JSON.stringify(shipping));
         dispatch(addOrder(orderId,shipping.country,shipping.town,shipping.zip,shipping.value,new Date().toDateString()))
+        handleOnClick()
     }
     const {country,...otherProps} = shipping
 

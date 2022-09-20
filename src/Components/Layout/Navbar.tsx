@@ -20,7 +20,7 @@ const Navbar = () => {
            <nav id="header" className="w-full z-10 top-0 py-1 sticky bg-white">
                <div className="w-full container mx-auto flex bg-white flex-wrap items-center justify-between mt-0 px-6 py-3">
 
-                   <label htmlFor="menu-toggle" className="cursor-pointer md:hidden block">
+                   <label htmlFor="menu-toggle" className="cursor-pointer md:hidden">
                        <svg className="fill-current text-gray-900" xmlns="http://www.w3.org/2000/svg" width="20"
                             height="20" viewBox="0 0 20 20">
                            <title>menu</title>
@@ -51,6 +51,8 @@ const Navbar = () => {
                            NORDICS
                        </a>
                    </div>
+
+
 
                    <div className="order-2 md:order-3 flex items-center" id="nav-content" >
 

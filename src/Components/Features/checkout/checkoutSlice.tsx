@@ -59,7 +59,7 @@ const checkoutSlice = createSlice({
         }else
         state.checkout.push(action.payload);
       },
-      prepare(id,country, town, zip, value,firstName,lastName,phone,email,orderNotes,date) {
+      prepare(id,country, town, zip, value,firstName,lastName,phone,email,orderNotes,date,streetAddress) {
         return {
           payload: {
             id,
@@ -72,7 +72,8 @@ const checkoutSlice = createSlice({
             phone,
             email,
             orderNotes,
-            date
+            date,
+            streetAddress
           },
         };
       },

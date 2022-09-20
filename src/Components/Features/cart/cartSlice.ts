@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../../App/store";
+import {RootState} from "../../App/store";
+import {PURGE} from "redux-persist";
 
 export interface ItemCart {
   id?: string;
@@ -57,6 +58,14 @@ const shopSlice = createSlice({
             cartItem.quantity++;
     }
   },
+  extraReducers: builder => {
+    builder.addCase(PURGE, (state) => {
+      // const storedState = localStorage.getItem("persist:root")
+      // const index = 1
+      //  storedState?.slice(index,1)
+      // localStorage.setItem('persist:root', storedState!)
+    })
+  }
 });
 export const selectShopCart = (state: RootState) => state.cart.value;
 

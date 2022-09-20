@@ -1,7 +1,6 @@
 import React  from "react";
 import InputCheckout from "../../Layout/inputsCheckout/InputCheckout";
 import CheckoutDetails from "./CheckoutDetails";
-import shipping from "../../Layout/Shipping";
 
 interface props {
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;

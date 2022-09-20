@@ -42,8 +42,8 @@ const ChangeAddress = ({
         type={"text"}
         value={shipping.zip}
         onChange={handleChange}
-        pattern="[0-9]{5}"
-        maxLength={5}
+        pattern="[0-9]{5}|[0-9]{2}-[0-9]{3}"
+        maxLength={5|6}
       />
       <button
           form={"shipping"}

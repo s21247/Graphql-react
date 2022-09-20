@@ -51,20 +51,25 @@ const Checkout = () => {
             ...prevData,
             [name]: value
         }))
+        setData(prevData => ({
+            ...prevData,
+            [name]: value
+        }))
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const findOrder = order.find(item => item.id === orderId)
         if(findOrder){
-            dispatch(userDetails(findOrder.id, findOrder.country, findOrder.town, findOrder.zip, findOrder.value, data.firstName, data.lastName, data.phone, data.email, data.orderNotes,new Date().toDateString()))
+            dispatch(userDetails(findOrder.id, findOrder.country, findOrder.town, findOrder.zip, findOrder.value, data.firstName, data.lastName, data.phone, data.email, data.orderNotes,new Date().toDateString(),data.streetAddress))
         }
-        else
-            dispatch(userDetails(orderId,data.country,data.town,data.zip,shipping.value,data.firstName,data.lastName,data.phone,data.email,data.orderNotes,new Date().toDateString()))
+        else {
+            dispatch(userDetails(orderId,data.country,data.town,data.zip,shipping.value,data.firstName,data.lastName,data.phone,data.email,data.orderNotes,new Date().toDateString(),data.streetAddress))
+        }
         setData(initialValue)
         setTimeout(() => {
             navigate(`order/${orderId}`)
-        },3000)
+        },2000)
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
