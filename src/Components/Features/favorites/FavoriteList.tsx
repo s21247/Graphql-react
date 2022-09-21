@@ -7,7 +7,7 @@ const FavoriteList = () => {
     const favoriteItems = useSelector(selectFavoritesItems)
     return (
         <>
-            <div className="my-10 flex flex-col ">
+            <div className="my-4 md:my-10 flex flex-col ">
             {
                 favoriteItems.map(item => {
                     return <Fragment key={item.id}>

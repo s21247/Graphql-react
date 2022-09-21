@@ -15,16 +15,16 @@ const PriceCart = ({ onClose }: CartPanelInterface) => {
   };
 
   return (
-    <div className="absolute bottom-0 flex flex-col w-full text-white h-80 z-200 bg-gray-800">
-      <div className="border-y-2 border-gray-500 mx-8 h-24 h-1/3">
-        <div className="flex flex-row py-10">
+    <div className="absolute bottom-0 flex flex-col w-full text-white md:h-80 z-200 bg-panelBackground">
+      <div className="border-y-2 border-gray-300 mx-3 md:mx-8 md:h-24 md:h-1/3">
+        <div className="flex flex-row py-3 md:py-10 ">
           <p>Subtotal</p>
           <p className="ml-auto order-2 mr-8">${totalPrice}.00</p>
         </div>
       </div>
-      <div className="flex flex-col w-full h-2/3 items-center pt-7 my-auto ">
+      <div className="flex flex-col w-full h-2/3 items-center pt-3 md:pt-7 my-auto ">
         <button
-          className="w-4/5 hover:bg-gray-600 py-5 mb-6 mx-auto bg-gray-900 text-white"
+          className="w-4/5 hover:bg-buttonHover py-2 md:py-5 mb-2 md:mb-6 mx-auto bg-panelBackground border border-gray-300 text-white"
           onClick={() => {
             routeChange(cartPage);
             onClose((value) => !value);
@@ -33,7 +33,7 @@ const PriceCart = ({ onClose }: CartPanelInterface) => {
           View Cart
         </button>
         <button
-          className="w-4/5 hover:bg-gray-600 py-5 mb-6 mx-auto bg-gray-900 text-white"
+          className="w-4/5 hover:bg-buttonHover py-2 md:py-5 mb-3 md:mb-6 mx-auto bg-panelButton text-white"
           onClick={() => {
             onClose((value) => !value);
             routeChange(checkoutPage);

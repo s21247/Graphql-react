@@ -8,8 +8,8 @@ interface props {
 }
 const CartPageItem = ({id,image,price,quantity,name,display=true}: ItemCart & props) => {
     return (
-        <div className={`relative flex w-full flex-row text-lg items-center border-b-2 border-gray-300 ${display ? 'h-48' : null}`}>
-            <img className="w-28 h-42 my-auto" src={image} alt={"icon"}/>
+        <div className={`relative my-3 md:my-1 flex w-full flex-row text-lg items-center border-b-2 border-gray-300 ${display ? 'h-48' : null}`}>
+            <img className="w-16 h-20 md:h-32 md:w-28 my-auto" src={image} alt={"icon"}/>
             <div className="flex flex-col mx-5 w-full">
                 <div className="flex flex-row items-center w-full">
                     <p>{name}</p>

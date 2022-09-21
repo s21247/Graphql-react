@@ -23,19 +23,19 @@ const Order = () => {
     }
     return (
         <>
-        <div className="container my-36 flex flex-col mx-auto items-stretch">
-            <div className="flex items-center text-3xl mx-auto text-green-500">
+        <div className="container my-4 md:my-36 flex flex-col mx-auto items-stretch">
+            <div className="flex items-center text-large md:text-3xl mx-auto text-green-500 ">
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="currentColor"
                      className="bi bi-check2 mr-2" viewBox="0 0 16 16">
                     <path
                         d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
                 </svg>
-                <p className="">Thank you. Your order has been received.</p>
+                <p className="font-semibold md:font-normal">Thank you. Your order has been received.</p>
             </div>
-            <div className="mt-10 w-2/3 text-2xl mx-auto flex text-gray-500">
-                <div className=" flex-col mx-auto justify-between">
-                    <p>Order number:</p>
-                    <p>{findOrder?.id.slice(0,4)}</p>
+            <div className="mt-4 md:mt-10 w-full md:w-2/3 text-large md:text-2xl mx-auto flex text-gray-500 ">
+                <div className="flex-col mx-auto justify-between">
+                    <p className="ml-5 md:ml-0">Order number:</p>
+                    <p className="ml-5 md:ml-0">{findOrder?.id.slice(0,4)}</p>
                 </div>
                 <div className=" flex-col mx-auto justify-between">
                     <p>Date:</p>
@@ -45,19 +45,19 @@ const Order = () => {
                     <p>Total:</p>
                     <p>${parseInt(findOrder!.value) + totalPrice}.00</p>
                 </div>
-                <div className=" flex-col mx-auto justify-between">
-                <p>Payment method:</p>
-                <p className="text-red-500">unavailable</p>
+                <div className=" flex-col md:mx-auto md:justify-between">
+                <p className="ml-5 md:ml-0">Payment method:</p>
+                <p className="text-red-500 ml-5 md:ml-0">unavailable</p>
                 </div>
 
 
             </div>
-            <div className="w-2/3 mx-auto">
-                <p className="text-3xl mt-10">Order details</p>
+            <div className="w-full md:w-2/3 mx-auto">
+                <p className="text-xl md:text-3xl mt-4 md:mt-10">Order details</p>
                 {
                     getCard.map((product : ItemCart) => (
                         <div
-                            className="mt-10 p-6 flex text-2xl items-center "
+                            className="mt-4 md:mt-10 p-4 md:p-6 flex text-large md:text-2xl items-center "
                             key={product.id}>
                             <p className="text-yellow-500">{product.name}</p>
                             <p className="pl-6"><span className="fill-current hover:text-black" aria-hidden="true">&#x2715;</span>
@@ -66,28 +66,28 @@ const Order = () => {
                         </div>
                     ))
                 }
-                <div className="flex p-6 text-2xl">
+                <div className="flex w-full py-6 px-4 md:p-6 text-large md:text-2xl">
                 <p>Subtotal:</p>
                     <p className="ml-auto">${totalPrice}.00</p>
                 </div>
-                <div className="flex px-6 pb-6 text-2xl">
+                <div className="flex px-4 md:px-6 pb-6 text-large md:text-2xl">
                     <p>Shipping</p>
                     <p className="ml-auto order-1">{findOrder?.value === "10" ? "via standard" : "via express"}</p>
                     <p className="ml-auto order-2">${findOrder?.value}.00</p>
                 </div>
-                <div className="flex px-6 pb-6 text-2xl mt-10">
+                <div className="flex px-4 md:px-6 pb-6 text-large md:text-2xl mt-4 md:mt-10">
                     <p className="">Payment method:</p>
                     <p className="ml-auto order-2 text-red-500">Unavailable</p>
                 </div>
-                <div className="flex px-6 pb-6 text-2xl">
+                <div className="flex px-4 md:px-6 pb-6 text-xl md:text-2xl">
                     <p>Total:</p>
                     <p className="ml-auto order-2">${parseInt(findOrder!.value) + totalPrice}.00</p>
                 </div>
-                <p className="text-3xl mt-10">User details</p>
+                <p className="text-xl md:text-3xl mt-4 md:mt-10">User details</p>
                 {
                     getOrder.map((order : CheckoutOrder) => (
                         <div
-                            className="mt-10 p-6 text-2xl items-center shadow-blue-500/50"
+                            className="mt-4 md:mt-10 p-6 text-2xl items-center"
                             key={order.id}>
                             <p className="">First name: </p>
                             <p className="pl-2 pb-3 ">{order.firstName}</p>
@@ -111,7 +111,7 @@ const Order = () => {
                 <div className="w-1/2 mx-auto">
                     <p className="text-red-500"><span className="text-xl">NOTE! </span>this button removes all the data from storage due to the fact there is no login so it can't be cleared on logout</p>
                 <button
-                    className="bg-black w-full items-center text-white py-4 mt-4 hover:bg-gray-800"
+                    className="bg-panelButton w-full items-center text-white py-4 mt-4 hover:bg-buttonHover"
                     onClick={() => {
                         purge()
                         navigate("/")

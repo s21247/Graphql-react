@@ -9,14 +9,14 @@ const FavoriteItem = ({id,image,name,price,isFavorite}: FavoritesCart) => {
         dispatch(favoritesItemRemoved(id))
     }
     return (
-        <div className="relative flex w-full h-48 flex-row text-lg items-center  border-b-2 border-gray-500">
-            <img className="w-28 h-42 my-auto" src={image} alt={"icon"}/>
+        <div className="relative flex w-full h-28 md:h-48 flex-row text-lg items-center border-b-2 border-gray-500">
+            <img className="w-14 h-20 md:w-28 md:h-40 my-auto" src={image} alt={"icon"}/>
             <p className="ml-2 w-1/6">{price}</p>
             <p className="float-right ml-auto w-1/6">${name}.00</p>
             <div className="float-right ml-auto">
             <button onClick={onClickRemoveFavorite} className="mr-16 w-18">
                 <svg
-                    className={`h-8 w-8 text-gray-500 fill-current ${isFavorite ? 'text-red-400' : null}`}
+                    className={`h-6 w-6 md:h-8 md:w-8 text-gray-500 fill-current ${isFavorite ? 'text-red-400' : null}`}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                 >
@@ -24,7 +24,7 @@ const FavoriteItem = ({id,image,name,price,isFavorite}: FavoritesCart) => {
                 </svg>
             </button>
             </div>
-            <div className="absolute top-0 right-0">
+            <div className="absolute top-0 right-2 md:right-0">
             <button onClick={onClickRemoveFavorite} className="font-bold text-white">
                  <span
                      className="fill-current text-gray-500 hover:text-gray-500"

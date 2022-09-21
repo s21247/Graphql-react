@@ -15,6 +15,9 @@ module.exports = {
                 transparent: 'transparent',
                 current: 'currentColor',
                 'myOrange': '#f59e0b',
+                'panelBackground': '#333333',
+                'panelButton': '#111111',
+                'buttonHover': '#4e4e4e'
         },
         maxHeight: {
             '128': '60rem',

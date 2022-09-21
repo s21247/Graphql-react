@@ -80,7 +80,7 @@ const Shipping = ({display=true,orderId,shipping,setShipping,express,standard} :
         </form>
             {   display ? <button
                     onClick={() => navigate(checkoutPage)}
-                    className="bg-black w-full items-center text-white py-4 mt-4 hover:bg-gray-800">
+                    className="bg-panelBackground w-full items-center text-white py-4 mt-4 hover:bg-buttonHover">
                     Proceed to checkout
                 </button> : null
             }

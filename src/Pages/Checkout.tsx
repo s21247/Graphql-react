@@ -87,20 +87,21 @@ const Checkout = () => {
 
     return (
         <>
-            <div className="container my-36 flex mx-auto items-stretch ">
-                <div className="flex-col w-3/5 relative mr-5 w-full">
+            <div className="container my-4 md:my-36 flex flex-col md:flex md:flex-row mx-auto items-stretch ">
+                <div className="flex-col w-full md:w-3/5 relative mr-5">
                     <h1 className="my-auto tracking-wide no-underline hover:no-underline font-semibold text-gray-800 text-2xl">Billing details</h1>
                     <CheckoutForm data={data} handleChange={handleChange} handleSubmit={handleSubmit} orderId={orderId} selectChange={selectChange} shipping={shipping}/>
                 </div>
-                <div className="flex-col w-2/5 relative mb-10 w-full">
+                <div className="flex-col w-full md:w-2/5 relative mb-10 w-full">
                     <h1 className="my-auto tracking-wide no-underline hover:no-underline font-semibold text-gray-800 text-2xl ">Your order</h1>
                     <CartPageList display={false}/>
                     <Shipping shipping={shipping} setShipping={setShipping} display={false} express={express} standard={standard} orderId={orderId}/>
                     <button
                         form={"form"}
-                        className="bg-black w-full items-center text-white py-4 mt-4 hover:bg-gray-800">
+                        className="bg-panelBackground w-full items-center text-white py-4 mt-4 hover:bg-buttonHover">
                         Place order
                     </button>
+                    <p className="py-8 md:hidden"/>
                 </div>
             </div>
             <Footer styles={{position: "fixed"}}/>

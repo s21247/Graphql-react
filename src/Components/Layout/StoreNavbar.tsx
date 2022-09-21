@@ -3,44 +3,60 @@ import { Category} from "../Models/Category.interface";
 import Search from "./search/Search";
 import {Product} from "../Models/Product.interface";
 import FilterSearch from "./search/FilterSearch";
+import {useLocation} from "react-router-dom";
 
 interface Props {
   categories: Category[];
   searchInput: string;
   setSearchInput: React.Dispatch<React.SetStateAction<string>>;
   setFilteredResults: React.Dispatch<React.SetStateAction<Product[]>>
-
-
 }
 const StoreNavbar = ({ categories, searchInput,setFilteredResults,setSearchInput}: Props) => {
   const [searchOpen, setSearchOpen] = useState<boolean>(false);
   const [filterSearchOpen,setFilterSearchOpen] = useState<boolean>(false);
 
+  const location = useLocation()
   const handleSearchFilterSearchClick = () => setFilterSearchOpen(value => !value);
   const handleSearchClick = () => setSearchOpen(value => !value);
 
   return (
     <>
       <nav id="store" className="w-full top-0 px-6 py-1">
-        <div className="w-full container mx-auto flex flex-wrap items-center justify-start mt-0 px-2 py-3">
-          <a
-            key={"all"}
-            className="tracking-wide no-underline hover:no-underline text-xl text-gray-700 z-10 hover:text-yellow-500"
-            href="/"
-          >
-            All
-          </a>
+        <div className="w-full container mx-auto flex md:flex-wrap md:items-center justify-start mt-0 px-2 py-3">
+          <div className="flex flex-col ">
+            <label htmlFor="categories-toggle" className="cursor-pointer md:hidden text-gray-800 text-xl z-1 ">
+              <title>categoriesMenu</title>
+              Categories
+            </label>
+            <input className="hidden" type="checkbox" id="categories-toggle"/>
+            <div className="flex flex-col hidden md:block items-center relative" id="categoriesMenu">
+              <nav>
+                <ul className="md:flex items-center justify-between text-base text-gray-700 md:pt-0">
+                  <li key={"all"}>
+                    <a
+                      key={"all"}
+                      className={`tracking-wide no-underline hover:no-underline text-xl text-gray-700 z-10 hover:text-yellow-500 ${location.pathname === "/" ? 'text-yellow-500' : ''}`}
+                      href="/"
+                  >
+                    All
+                  </a></li>
+
+
           {categories.map((category) => (
-            <a
+            <li key={category.name}><a
               key={category.name}
-              className="tracking-wide no-underline hover:no-underline mx-5 text-gray-800 text-xl z-1 hover:text-yellow-500"
+              className={`md:block tracking-wide no-underline hover:no-underline md:mx-5 text-gray-800 text-xl z-1 hover:text-yellow-500 ${location.pathname === `/product-category/${category.name}` ? 'text-yellow-500' : ''}`}
               href={`/product-category/${category.name}`}
             >
               {category.name}
-            </a>
+            </a></li>
           ))}
+                </ul>
+              </nav>
+            </div>
+          </div>
 
-          <div className="flex items-center ml-auto" id="store-nav-content">
+          <div className="flex place-items-start md:items-center ml-auto" id="store-nav-content">
             <button
               onClick={() => handleSearchClick()}
               className="pl-3 inline-block no-underline tracking-wide no-underline hover:no-underline mx-5 text-gray-800 text-xl ml-5"
@@ -60,7 +76,7 @@ const StoreNavbar = ({ categories, searchInput,setFilteredResults,setSearchInput
               </svg>
             </button>
           </div>
-        </div>
+          </div>
         <Search
             open={searchOpen}
             onClose={handleSearchClick}
