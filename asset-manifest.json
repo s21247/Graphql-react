@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Graphql-react/static/css/main.e7b6e8c9.css",
+    "main.js": "/Graphql-react/static/js/main.e9db1381.js",
+    "static/media/Image1.jpg": "/Graphql-react/static/media/Image1.512791d69cb001babff1.jpg",
+    "static/media/Image2.jpg": "/Graphql-react/static/media/Image2.a33e59ff7f4c336111f5.jpg",
+    "static/media/Image3.jpg": "/Graphql-react/static/media/Image3.c581457c5f8e53240678.jpg",
+    "index.html": "/Graphql-react/index.html",
+    "main.e7b6e8c9.css.map": "/Graphql-react/static/css/main.e7b6e8c9.css.map",
+    "main.e9db1381.js.map": "/Graphql-react/static/js/main.e9db1381.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e7b6e8c9.css",
+    "static/js/main.e9db1381.js"
+  ]
+}
