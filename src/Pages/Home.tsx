@@ -1,6 +1,6 @@
 import React,{ useState} from "react";
 import MainImage from "../Components/Layout/MainImage";
-import StoreNavbar from "../Components/Layout/navbar/StoreNavbar";
+import StoreNavbar from "../Components/Layout/StoreNavbar";
 import GetCategories from "../Components/Hooks/GetCategories";
 import {Outlet} from "react-router-dom";
 import Footer from "../Components/Layout/Footer";
