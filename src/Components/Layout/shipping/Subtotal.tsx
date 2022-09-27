@@ -1,8 +1,8 @@
 import React from "react";
-import RadioInput from "./inputsShipping/RadioInput";
-import ChangeAddress from "./inputsShipping/ChangeAddress";
+import RadioInput from "../inputsShipping/RadioInput";
+import ChangeAddress from "../inputsShipping/ChangeAddress";
 import {useSelector} from "react-redux";
-import {selectCheckoutOrder} from "../Features/checkout/checkoutSlice";
+import {selectCheckoutOrder} from "../../Features/checkout/checkoutSlice";
 
 
 interface props {

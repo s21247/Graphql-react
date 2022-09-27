@@ -3,11 +3,15 @@ import Footer from "../Components/Layout/Footer";
 import CartPageList from "../Components/Features/cart/CartPageList";
 import CartTotals from "../Components/Features/cart/CartTotals";
 import {useNavigate} from "react-router-dom";
-import Shipping from "../Components/Layout/Shipping";
+import Shipping from "../Components/Layout/shipping/Shipping";
 import {orderId} from "./Checkout";
+import {useSelector} from "react-redux";
+import {selectShopCart} from "../Components/Features/cart/cartSlice";
+import CartNoItems from "../Components/Features/cart/CartNoItems";
 
 const Cart = () => {
     const navigate = useNavigate()
+    const itemsInCart = useSelector(selectShopCart)
     const routeChange = (path: string) => {
         navigate(path)
     }
@@ -21,6 +25,7 @@ const Cart = () => {
     })
     return (
         <>
+            { itemsInCart.length === 0 ? <CartNoItems open={itemsInCart.length===0}/> :
             <div className="container my-4 md:my-36 flex-col md:flex md:flex-row mx-auto items-stretch w-full">
                 <div className="flex-col w-full md:w-3/5 relative mr-5">
                     <h1 className="my-auto tracking-wide no-underline hover:no-underline font-semibold text-gray-800 text-2xl">Shopping Cart</h1>
@@ -38,7 +43,9 @@ const Cart = () => {
 
                 </div>
             </div>
+            }
             <Footer styles={{position: "fixed"}}/>
+
         </>
     );
 };

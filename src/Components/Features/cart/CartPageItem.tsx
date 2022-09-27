@@ -1,7 +1,7 @@
 import React from 'react';
 import {ItemCart} from "./cartSlice";
 import {onClickItemIncrementValue, onClickItemDecrementValue, onClickItemRemove} from "../../Helpers/cartHelpers";
-import CheckoutCard from "../../Layout/CheckoutCard";
+import CheckoutCard from "../../Layout/card/CheckoutCard";
 
 interface props {
     display?: boolean

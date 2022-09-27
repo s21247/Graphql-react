@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
-import CartPanel from "../Features/cart/CartPanel";
-import ShopModal from "../Hooks/ShopModal";
+import CartPanel from "../../Features/cart/CartPanel";
+import ShopModal from "../../Hooks/ShopModal";
 import {useSelector} from "react-redux";
-import {selectShopCart} from "../Features/cart/cartSlice";
+import {selectShopCart} from "../../Features/cart/cartSlice";
 
 const Navbar = () => {
     const [cartOpen, setCartOpen] = useState<boolean>(false);

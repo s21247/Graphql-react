@@ -10,7 +10,7 @@ const CartPageList = ({display}: props) => {
     const itemsInCart = useSelector(selectShopCart)
     return (
         <>
-            <div className="relative flex flex-col my-4 md:my-8">
+            <div className="relative flex flex-col my-4 md:my-8 overflow-auto h-2/5">
                 {
                     itemsInCart.map(item => {
                         return <Fragment key={item.id}>

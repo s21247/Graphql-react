@@ -4,6 +4,7 @@ import favoriteReducer from "../Features/favorites/favoritesSlice";
 import checkoutReducer from "../Features/checkout/checkoutSlice";
 import storage from "redux-persist/lib/storage"
 import {persistReducer, FLUSH,REGISTER,PERSIST,PAUSE,REHYDRATE,PURGE} from "redux-persist"
+import { encryptTransform } from 'redux-persist-transform-encrypt';
 
 const reducers = combineReducers({
     cart: shopReducer,
@@ -18,6 +19,7 @@ const persistConfig = {
 }
 
 const persistedReducer = persistReducer(persistConfig,reducers)
+
 export const store = configureStore({
     reducer: persistedReducer,
     middleware: (getDefaultMiddleware => getDefaultMiddleware({

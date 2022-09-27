@@ -46,14 +46,7 @@ const MainImage = () => {
 
 
   return (
-    <div
-      className="carousel relative container mx-auto h-full "
-      style={{
-        maxWidth:"125rem"
-      }}
-
-    >
-
+    <div className="carousel relative container mx-auto h-full max-w-128">
       <div className="carousel-inner overflow-hidden relative w-full">
         <input
           className="carousel-open"
@@ -67,22 +60,17 @@ const MainImage = () => {
           onChange={handleChange}
         />
         <div
-          className="carousel-item absolute opacity-0 bg-cover min-h-20 max-h-128"
-          style={{
-            height: "60rem"
-
-          }}
-        >
+          className="carousel-item absolute opacity-0 bg-cover h-80 md:h-128">
           <div
             className="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-bottom"
             style={{
               backgroundImage: "url(" + obj.images[1] + ")",
             }}
           >
-            <div className="container mx-auto">
+            <div className="container mx-auto mt-20 md:mt-0">
               <div className="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
-                <p className="text-black text-2xl my-4">
-                  Stripy Zig Zag Jigsaw Pillow and Duvet Set
+                <p className="text-black text-large md:text-2xl my-auto md:my-4">
+                  Stripy Zig Zag Pillow and Duvet Set
                 </p>
                 <a
                   className="text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black"
@@ -119,24 +107,20 @@ const MainImage = () => {
             onChange={handleChange}
         />
         <div
-            className="carousel-item absolute opacity-0"
-            style={{
-              height: "60rem",
-            }}
-        >
+            className="carousel-item absolute opacity-0 h-80 md:h-128">
           <div
               className="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-bottom"
               style={{
                 backgroundImage: "url(" + obj.images[0] + ")",
               }}
           >
-            <div className="container w-full mx-auto">
+            <div className="container w-full mx-auto mt-20 md:mt-0">
               <div className="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
-                <p className="text-black text-2xl my-4">
+                <p className="text-gray-200 text-large md:text-2xl my-4">
                   Light Pendant Lightning
                 </p>
                 <a
-                    className="relative text-xl inline-block no-underline border-b border-gray-600 leading-relaxed hover:text-black hover:border-black"
+                    className="relative text-gray-200 text-xl inline-block no-underline border-b border-gray-200 leading-relaxed hover:text-black hover:border-black"
                     href="/"
                 >
                   view product
@@ -170,10 +154,7 @@ const MainImage = () => {
           value={0}
         />
         <div
-          className="carousel-item absolute opacity-0"
-          style={{
-            height: "60rem",
-          }}
+          className="carousel-item absolute opacity-0 h-80 md:h-128"
         >
           <div
             className="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-bottom"
@@ -181,9 +162,9 @@ const MainImage = () => {
               backgroundImage: "url(" + obj.images[2] + ")",
             }}
           >
-            <div className="container mx-auto">
+            <div className="container mx-auto mt-20">
               <div className="flex flex-col w-full lg:w-1/2 md:ml-16 items-center md:items-start px-6 tracking-wide">
-                <p className="text-black text-2xl my-4">
+                <p className="text-black text-large md:text-2xl my-auto md:my-4">
                   Brown and blue hardbound book
                 </p>
                 <a
