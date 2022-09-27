@@ -1,4 +1,5 @@
 {
+  "homepage": "http://s21247.github.io/Graphql-react",
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
@@ -26,6 +27,8 @@
   "scripts": {
     "start": "npm run watch:css && react-scripts start",
     "build": "npm run watch:css && react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "watch:css": "postcss src/index.css -o"
@@ -51,6 +54,7 @@
   "devDependencies": {
     "@types/redux-persist": "^4.3.1",
     "autoprefixer": "^10.4.8",
+    "gh-pages": "^4.0.0",
     "postcss": "^8.4.16",
     "prettier": "2.6.2",
     "tailwindcss": "^3.1.8"
