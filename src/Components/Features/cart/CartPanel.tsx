@@ -3,19 +3,15 @@ import PriceCart from "./PriceCart";
 import { useSelector } from "react-redux";
 import { ItemCart, selectShopCart } from "./cartSlice";
 import {onClickItemIncrementValue, onClickItemDecrementValue, onClickItemRemove} from "../../Helpers/cartHelpers";
-import NoItems from "./NoItems";
 
 export interface CartPanelInterface  {
   onClose:  React.Dispatch<React.SetStateAction<Boolean>>
 }
 const CartPanel = ({onClose}: CartPanelInterface) => {
   const shopCart = useSelector(selectShopCart);
-
   return (
     <>
       <div className="overflow-auto h-4/6">
-          <NoItems open={shopCart.length === 0}/>
-
         {shopCart.map((item, index) => {
           return (
             <div key={item.id} className="">
@@ -66,7 +62,7 @@ const CartPanel = ({onClose}: CartPanelInterface) => {
           );
         })}
       </div>
-      <PriceCart onClose={onClose} open={shopCart.length === 0}/>
+      <PriceCart onClose={onClose} />
     </>
   );
 };

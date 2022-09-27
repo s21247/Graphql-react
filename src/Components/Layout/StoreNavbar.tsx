@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Category} from "../../Models/Category.interface";
-import Search from "../search/Search";
-import {Product} from "../../Models/Product.interface";
-import FilterSearch from "../search/FilterSearch";
+import { Category} from "../Models/Category.interface";
+import Search from "./search/Search";
+import {Product} from "../Models/Product.interface";
+import FilterSearch from "./search/FilterSearch";
 import {useLocation} from "react-router-dom";
 
 interface Props {

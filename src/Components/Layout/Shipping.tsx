@@ -1,11 +1,11 @@
 import React, {Dispatch, SetStateAction, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {selectShopCart} from "../../Features/cart/cartSlice";
-import {countTotalPrice} from "../../Helpers/cartHelpers";
+import {selectShopCart} from "../Features/cart/cartSlice";
+import {countTotalPrice} from "../Helpers/cartHelpers";
 import {useNavigate} from "react-router-dom";
-import {checkoutPage} from "../../Routing/Routing";
+import {checkoutPage} from "../Routing/Routing";
 import Subtotal from "./Subtotal";
-import {addOrder} from "../../Features/checkout/checkoutSlice";
+import {addOrder} from "../Features/checkout/checkoutSlice";
 
 interface props {
     display?: boolean;

@@ -5,27 +5,12 @@ import { useNavigate } from "react-router-dom";
 import { cartPage, checkoutPage } from "../../Routing/Routing";
 import { CartPanelInterface } from "./CartPanel";
 import { countTotalPrice } from "../../Helpers/cartHelpers";
-
-interface prop {
-    open: boolean
-}
-type Props = CartPanelInterface & prop;
-const PriceCart = ({ onClose,open }: Props ) => {
+const PriceCart = ({ onClose }: CartPanelInterface) => {
   const shopPrice = useSelector(selectShopCart);
   const totalPrice = countTotalPrice(shopPrice);
   const navigate = useNavigate();
-    if(open) return <div className="absolute bottom-10 flex flex-col w-full text-white z-200 bg-panelBackground">
-        <button
-        className="w-4/5 hover:bg-buttonHover py-2 md:py-5 mb-3 md:mb-6 mx-auto bg-panelBackground border border-gray-300 text-white"
-        onClick={() => {
-            onClose((value) => !value);
-        }}
-    >
-        Continue shopping
-    </button> </div>;
 
-
-    const routeChange = (path: string) => {
+  const routeChange = (path: string) => {
     navigate(path);
   };
 
