@@ -47,11 +47,7 @@ const MainImage = () => {
 
   return (
     <div
-      className="carousel relative container mx-auto h-full "
-      style={{
-        maxWidth:"125rem"
-      }}
-
+      className="carousel relative container mx-auto h-full max-w-128"
     >
 
       <div className="carousel-inner overflow-hidden relative w-full">
@@ -67,11 +63,7 @@ const MainImage = () => {
           onChange={handleChange}
         />
         <div
-          className="carousel-item absolute opacity-0 bg-cover min-h-20 max-h-128"
-          style={{
-            height: "60rem"
-
-          }}
+          className="carousel-item absolute opacity-0 bg-cover h-80 md:h-128"
         >
           <div
             className="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-bottom"
@@ -119,10 +111,7 @@ const MainImage = () => {
             onChange={handleChange}
         />
         <div
-            className="carousel-item absolute opacity-0"
-            style={{
-              height: "60rem",
-            }}
+            className="carousel-item absolute opacity-0 bg-cover h-80 md:h-128"
         >
           <div
               className="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-bottom"
@@ -170,10 +159,7 @@ const MainImage = () => {
           value={0}
         />
         <div
-          className="carousel-item absolute opacity-0"
-          style={{
-            height: "60rem",
-          }}
+          className="carousel-item absolute opacity-0 bg-cover h-80 md:h-128"
         >
           <div
             className="block h-full w-full mx-auto flex pt-6 md:pt-0 md:items-center bg-cover bg-bottom"

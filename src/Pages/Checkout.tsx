@@ -7,11 +7,14 @@ import {nanoid} from "@reduxjs/toolkit";
 import {useDispatch, useSelector} from "react-redux";
 import {selectCheckoutOrder, userDetails} from "../Components/Features/checkout/checkoutSlice";
 import {useNavigate} from "react-router-dom";
+import {selectShopCart} from "../Components/Features/cart/cartSlice";
+import CartNoItems from "../Components/Features/cart/CartNoItems";
 
 export const orderId = nanoid()
 const Checkout = () => {
     const order = useSelector(selectCheckoutOrder)
     const dispatch = useDispatch()
+    const itemsInCart = useSelector(selectShopCart)
     const initialValue = {
         firstName: "",
         lastName: "",
@@ -87,23 +90,29 @@ const Checkout = () => {
 
     return (
         <>
-            <div className="container my-4 md:my-36 flex flex-col md:flex md:flex-row mx-auto items-stretch ">
-                <div className="flex-col w-full md:w-3/5 relative mr-5">
-                    <h1 className="my-auto tracking-wide no-underline hover:no-underline font-semibold text-gray-800 text-2xl">Billing details</h1>
-                    <CheckoutForm data={data} handleChange={handleChange} handleSubmit={handleSubmit} orderId={orderId} selectChange={selectChange} shipping={shipping}/>
+            {itemsInCart.length === 0 ? <CartNoItems open={itemsInCart.length === 0}/> :
+                <div className="container my-4 md:my-36 flex flex-col md:flex md:flex-row mx-auto items-stretch ">
+                    <div className="flex-col w-full md:w-3/5 relative mr-5">
+                        <h1 className="my-auto tracking-wide no-underline hover:no-underline font-semibold text-gray-800 text-2xl">Billing
+                            details</h1>
+                        <CheckoutForm data={data} handleChange={handleChange} handleSubmit={handleSubmit}
+                                      orderId={orderId} selectChange={selectChange} shipping={shipping}/>
+                    </div>
+                    <div className="flex-col w-full md:w-2/5 relative mb-10 w-full">
+                        <h1 className="my-auto tracking-wide no-underline hover:no-underline font-semibold text-gray-800 text-2xl ">Your
+                            order</h1>
+                        <CartPageList display={false}/>
+                        <Shipping shipping={shipping} setShipping={setShipping} display={false} express={express}
+                                  standard={standard} orderId={orderId}/>
+                        <button
+                            form={"form"}
+                            className="bg-panelBackground w-full items-center text-white py-4 mt-4 hover:bg-buttonHover">
+                            Place order
+                        </button>
+                        <p className="py-8 md:hidden"/>
+                    </div>
                 </div>
-                <div className="flex-col w-full md:w-2/5 relative mb-10 w-full">
-                    <h1 className="my-auto tracking-wide no-underline hover:no-underline font-semibold text-gray-800 text-2xl ">Your order</h1>
-                    <CartPageList display={false}/>
-                    <Shipping shipping={shipping} setShipping={setShipping} display={false} express={express} standard={standard} orderId={orderId}/>
-                    <button
-                        form={"form"}
-                        className="bg-panelBackground w-full items-center text-white py-4 mt-4 hover:bg-buttonHover">
-                        Place order
-                    </button>
-                    <p className="py-8 md:hidden"/>
-                </div>
-            </div>
+            }
             <Footer styles={{position: "fixed"}}/>
 
         </>

@@ -24,6 +24,9 @@ module.exports = {
         },
         maxWidth: {
           '128': '125rem'
+        },
+        height: {
+            '128': '60rem',
         }
     },
     plugins: [
